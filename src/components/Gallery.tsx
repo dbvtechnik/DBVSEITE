@@ -21,6 +21,26 @@ export default function Gallery() {
           </h2>
         </div>
 
+        {/* Featured wedding setup */}
+        <div className="group relative mb-4 overflow-hidden rounded-2xl border border-white/[0.08] hover:border-white/20 transition-colors">
+          <img
+            src="/image copy.png"
+            alt="Hochzeits-Setup"
+            loading="lazy"
+            className="h-full max-h-[520px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
+          <div className="absolute inset-0 flex items-end p-8">
+            <div>
+              <p className="text-xs text-accent font-medium uppercase tracking-[0.25em]">Eventtechnik</p>
+              <h3 className="mt-1 text-2xl font-semibold text-white">Hochzeits-Setup</h3>
+              <p className="mt-2 max-w-md text-sm text-white/60">
+                Stimmungsvolle Licht- und Tontechnik für den schönsten Tag im Leben.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {galleryImages.map((img, i) => (
             <div
