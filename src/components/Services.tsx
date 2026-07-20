@@ -68,14 +68,14 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid gap-px bg-white/[0.06] sm:grid-cols-2 lg:grid-cols-3 border border-white/[0.06]">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <div
               key={service.title}
-              className="group relative bg-[#040404] p-8 hover:bg-white/[0.03] transition-colors duration-300"
+              className="group relative card card-hover p-8"
             >
               <div className="flex items-start justify-between mb-6">
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-sm bg-white/[0.05] group-hover:bg-accent transition-colors duration-300">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors duration-300">
                   <service.icon className="h-6 w-6 text-white/70 group-hover:text-white transition-colors duration-300" />
                 </div>
                 <span className="font-display text-sm font-bold text-white/20 tracking-widest">
@@ -88,7 +88,7 @@ export default function Services() {
                 {service.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-sm bg-white/[0.04] px-2.5 py-1 text-[11px] text-white/50 group-hover:text-white/70 transition-colors"
+                    className="rounded-full bg-white/[0.04] px-2.5 py-1 text-[11px] text-white/50 group-hover:text-white/70 transition-colors"
                   >
                     {tag}
                   </span>

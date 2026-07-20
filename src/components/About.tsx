@@ -39,13 +39,13 @@ export default function About() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-px bg-white/[0.06] border border-white/[0.06]">
+          <div className="grid grid-cols-2 gap-4">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="bg-[#040404] p-8 text-center hover:bg-white/[0.03] transition-colors"
+                className="card p-8 text-center hover:bg-white/[0.06] transition-colors"
               >
-                <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center bg-white/[0.05]">
+                <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.05]">
                   <stat.icon className="h-6 w-6 text-white/70" />
                 </div>
                 <div className="font-display text-3xl font-bold text-white">{stat.value}</div>

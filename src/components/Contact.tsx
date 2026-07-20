@@ -88,7 +88,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
               <h3 className="font-display text-xl font-semibold mb-6">Direkter Kontakt</h3>
               <div className="space-y-5">
                 <a href="tel:+491701234567" className="flex items-center gap-4 group">
-                  <div className="flex h-11 w-11 items-center justify-center bg-white/[0.05] group-hover:bg-accent transition-colors">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors">
                     <Phone className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
                   </div>
                   <div>
@@ -97,7 +97,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   </div>
                 </a>
                 <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-4 group">
-                  <div className="flex h-11 w-11 items-center justify-center bg-white/[0.05] group-hover:bg-accent transition-colors">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors">
                     <Mail className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
                   </div>
                   <div>
@@ -106,7 +106,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   </div>
                 </a>
                 <div className="flex items-center gap-4">
-                  <div className="flex h-11 w-11 items-center justify-center bg-white/[0.05]">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05]">
                     <MapPin className="h-5 w-5 text-white/70" />
                   </div>
                   <div>
@@ -136,7 +136,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   Gewähltes Paket
                 </label>
                 {selectedPkg ? (
-                  <div className="flex items-center justify-between bg-white/[0.05] border border-accent/30 px-4 py-3">
+                  <div className="flex items-center justify-between rounded-xl bg-white/[0.05] border border-accent/30 px-4 py-3">
                     <span className="text-sm font-semibold text-white">{selectedPkg.name}</span>
                     <button
                       type="button"
@@ -149,7 +149,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                 ) : (
                   <a
                     href="#pakete"
-                    className="block border border-dashed border-white/15 px-4 py-3 text-sm text-white/40 hover:border-accent hover:text-accent transition-colors text-center"
+                    className="block rounded-xl border border-dashed border-white/15 px-4 py-3 text-sm text-white/40 hover:border-accent hover:text-accent transition-colors text-center"
                   >
                     Bitte wählen Sie ein Paket aus
                   </a>
@@ -164,7 +164,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                     placeholder="Max Mustermann"
                   />
                 </div>
@@ -175,7 +175,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                     placeholder="max@example.de"
                   />
                 </div>
@@ -185,7 +185,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                     placeholder="+49 170 1234567"
                   />
                 </div>
@@ -198,7 +198,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     type="date"
                     value={form.event_date}
                     onChange={(e) => setForm({ ...form, event_date: e.target.value })}
-                    className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark]"
+                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark]"
                   />
                 </div>
               </div>
@@ -209,7 +209,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   type="text"
                   value={form.event_location}
                   onChange={(e) => setForm({ ...form, event_location: e.target.value })}
-                  className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                  className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                   placeholder="z.B. Stuttgart, Eventhalle"
                 />
               </div>
@@ -220,20 +220,20 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   rows={4}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full resize-none bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                  className="w-full resize-none rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                   placeholder="Erzählen Sie uns von Ihrem Event – Anlass, Gästeanzahl, Wünsche..."
                 />
               </div>
 
               {status === 'error' && (
-                <div className="flex items-center gap-3 bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-300">
+                <div className="flex items-center gap-3 rounded-xl bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-300">
                   <AlertCircle className="h-5 w-5 flex-shrink-0" />
                   <span>{errorMsg}</span>
                 </div>
               )}
 
               {status === 'success' && (
-                <div className="flex items-center gap-3 bg-green-500/10 border border-green-500/30 px-4 py-3 text-sm text-green-300">
+                <div className="flex items-center gap-3 rounded-xl bg-green-500/10 border border-green-500/30 px-4 py-3 text-sm text-green-300">
                   <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
                   <span>Ihr E-Mail-Programm öffnet sich mit der vorbereiteten Anfrage. Bitte senden Sie diese ab.</span>
                 </div>
@@ -241,7 +241,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
 
               <button
                 type="submit"
-                className="group flex w-full items-center justify-center gap-2 bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent"
+                className="group flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent"
               >
                 Anfrage senden
                 <Send className="h-4 w-4 group-hover:translate-x-1 transition-transform" />

@@ -26,7 +26,7 @@ export default function Gallery() {
             <div
               key={i}
               onClick={() => openLightbox(i)}
-              className={`group relative cursor-pointer overflow-hidden border border-white/[0.08] hover:border-white/20 transition-colors ${
+              className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-white/[0.08] hover:border-white/20 transition-colors ${
                 i === 0 || i === 5 ? 'col-span-2 row-span-2' : ''
               }`}
             >
@@ -45,7 +45,7 @@ export default function Gallery() {
                     <p className="text-xs text-accent font-medium">{img.category}</p>
                     <h3 className="text-lg font-semibold text-white">{img.title}</h3>
                   </div>
-                  <div className="flex h-9 w-9 items-center justify-center bg-accent text-white">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-white">
                     <ZoomIn className="h-4 w-4" />
                   </div>
                 </div>
@@ -61,19 +61,19 @@ export default function Gallery() {
           onClick={closeLightbox}
         >
           <button
-            className="absolute top-6 right-6 flex h-11 w-11 items-center justify-center border border-white/15 text-white hover:border-white/40 transition-colors"
+            className="absolute top-6 right-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white hover:border-white/40 transition-colors"
             onClick={closeLightbox}
           >
             <X className="h-5 w-5" />
           </button>
           <button
-            className="absolute left-6 flex h-11 w-11 items-center justify-center border border-white/15 text-white hover:border-white/40 transition-colors"
+            className="absolute left-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white hover:border-white/40 transition-colors"
             onClick={(e) => { e.stopPropagation(); prev(); }}
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
-            className="absolute right-6 flex h-11 w-11 items-center justify-center border border-white/15 text-white hover:border-white/40 transition-colors"
+            className="absolute right-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white hover:border-white/40 transition-colors"
             onClick={(e) => { e.stopPropagation(); next(); }}
           >
             <ChevronRight className="h-5 w-5" />

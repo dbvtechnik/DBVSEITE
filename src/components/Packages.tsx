@@ -39,26 +39,26 @@ export default function Packages({ selectedPackage, onSelectPackage }: Props) {
               <div
                 key={pkg.id}
                 onClick={() => onSelectPackage(pkg.id)}
-                className={`group relative cursor-pointer p-8 border transition-all duration-300 hover:-translate-y-1 ${
+                className={`group relative cursor-pointer p-8 border rounded-2xl transition-all duration-300 hover:-translate-y-1 ${
                   pkg.highlighted
                     ? 'bg-white/[0.05] border-accent/40 glow-accent'
                     : 'card card-hover'
                 } ${isSelected ? 'ring-1 ring-accent scale-[1.02]' : ''}`}
               >
                 {pkg.badge && (
-                  <div className="absolute -top-px left-0 bg-accent px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+                  <div className="absolute -top-px left-8 rounded-b-full bg-accent px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
                     {pkg.badge}
                   </div>
                 )}
 
                 {isSelected && (
-                  <div className="absolute top-4 right-4 flex h-6 w-6 items-center justify-center bg-accent text-white">
+                  <div className="absolute top-4 right-4 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-white">
                     <Check className="h-3.5 w-3.5" strokeWidth={3} />
                   </div>
                 )}
 
                 <div className="relative">
-                  <div className="mb-6 inline-flex h-12 w-12 items-center justify-center bg-white/[0.05] group-hover:bg-accent transition-colors duration-300">
+                  <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors duration-300">
                     <Icon className="h-6 w-6 text-white/70 group-hover:text-white transition-colors duration-300" />
                   </div>
 
@@ -76,7 +76,7 @@ export default function Packages({ selectedPackage, onSelectPackage }: Props) {
                   </ul>
 
                   <button
-                    className={`mt-8 w-full py-3 text-sm font-semibold uppercase tracking-wider transition-all ${
+                    className={`mt-8 w-full rounded-full py-3 text-sm font-semibold uppercase tracking-wider transition-all ${
                       isSelected
                         ? 'bg-accent text-white'
                         : 'border border-white/15 text-white/80 hover:border-white/40 hover:text-white'

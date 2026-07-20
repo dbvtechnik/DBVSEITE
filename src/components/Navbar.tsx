@@ -48,7 +48,7 @@ export default function Navbar() {
           ))}
           <a
             href="#kontakt"
-            className="rounded-sm bg-accent px-5 py-2 text-sm font-semibold text-white hover:bg-accent-600 transition-colors"
+            className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white hover:bg-accent-600 transition-colors"
           >
             Anfragen
           </a>
@@ -79,7 +79,7 @@ export default function Navbar() {
             <a
               href="#kontakt"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-sm bg-accent px-5 py-2.5 text-center text-sm font-semibold text-white"
+              className="mt-2 rounded-full bg-accent px-5 py-2.5 text-center text-sm font-semibold text-white"
             >
               Anfragen
             </a>

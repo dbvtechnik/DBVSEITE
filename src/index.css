@@ -21,13 +21,13 @@
     @apply text-[11px] font-semibold uppercase tracking-[0.3em] text-white/40;
   }
   .card {
-    @apply bg-white/[0.04] border border-white/[0.08];
+    @apply bg-white/[0.04] border border-white/[0.08] rounded-2xl;
   }
   .card-hover {
     @apply hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300;
   }
   .glow-accent {
-    box-shadow: 0 0 32px -8px rgba(227, 6, 19, 0.5);
+    box-shadow: 0 0 32px -8px rgba(59, 130, 246, 0.45);
   }
   .grid-pattern {
     background-image:
@@ -37,10 +37,10 @@
   }
   /* Keep for legacy compat */
   .glass {
-    @apply bg-white/[0.04] border border-white/[0.08];
+    @apply bg-white/[0.04] border border-white/[0.08] rounded-2xl;
   }
   .glass-strong {
-    @apply bg-white/[0.06] border border-white/[0.12];
+    @apply bg-white/[0.06] border border-white/[0.12] rounded-2xl;
   }
   .text-gradient {
     @apply bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent;

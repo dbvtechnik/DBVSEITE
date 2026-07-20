@@ -58,14 +58,14 @@ export default function Hero() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: '0.3s', opacity: 0 }}>
           <a
             href="#pakete"
-            className="group inline-flex items-center gap-2 bg-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent"
+            className="group inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent"
           >
             Pakete ansehen
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <a
             href="#kontakt"
-            className="inline-flex items-center gap-2 border border-white/20 px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white/80 hover:border-white/50 hover:text-white transition-all"
+            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white/80 hover:border-white/50 hover:text-white transition-all"
           >
             Anfrage stellen
           </a>
