@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Send, CheckCircle2, AlertCircle, Loader2, Mail, Phone, MapPin, Calendar, Package } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { Send, CheckCircle2, AlertCircle, Mail, Phone, MapPin, Calendar, Package } from 'lucide-react';
 import { packages, type PackageId } from '../data';
 
 interface Props {
@@ -8,7 +7,7 @@ interface Props {
   onSelectPackage: (id: PackageId) => void;
 }
 
-type Status = 'idle' | 'loading' | 'success' | 'error';
+const CONTACT_EMAIL = 'info@dbv-veranstaltungstechnik.de';
 
 export default function Contact({ selectedPackage, onSelectPackage }: Props) {
   const [form, setForm] = useState({
@@ -19,7 +18,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
     event_location: '',
     message: '',
   });
-  const [status, setStatus] = useState<Status>('idle');
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
 
   const selectedPkg = packages.find((p) => p.id === selectedPackage);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedPackage) {
       setStatus('error');
@@ -47,52 +46,25 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
       return;
     }
 
-    setStatus('loading');
+    const lines = [
+      `Paket: ${selectedPkg?.name ?? selectedPackage}`,
+      `Name: ${form.name.trim()}`,
+      `E-Mail: ${form.email.trim()}`,
+      form.phone.trim() && `Telefon: ${form.phone.trim()}`,
+      form.event_date && `Eventdatum: ${form.event_date}`,
+      form.event_location.trim() && `Event-Ort: ${form.event_location.trim()}`,
+      '',
+      form.message.trim(),
+    ].filter(Boolean);
+
+    const subject = `Anfrage: ${selectedPkg?.name ?? 'Event'} – ${form.name.trim()}`;
+    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+
+    window.location.href = mailto;
+    setStatus('success');
     setErrorMsg('');
-
-    try {
-      const { error } = await supabase.from('inquiries').insert({
-        name: form.name.trim(),
-        email: form.email.trim(),
-        phone: form.phone.trim() || null,
-        event_date: form.event_date || null,
-        event_location: form.event_location.trim() || null,
-        package: selectedPackage,
-        message: form.message.trim() || null,
-      });
-
-      if (error) throw error;
-
-      try {
-        const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string;
-        const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
-        await fetch(`${supabaseUrl}/functions/v1/send-inquiry-notification`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${supabaseAnonKey}`,
-          },
-          body: JSON.stringify({
-            name: form.name.trim(),
-            email: form.email.trim(),
-            phone: form.phone.trim() || null,
-            event_date: form.event_date || null,
-            event_location: form.event_location.trim() || null,
-            package: selectedPackage,
-            message: form.message.trim() || null,
-          }),
-        });
-      } catch {
-        // E-Mail-Benachrichtigung ist Best-Effort – Anfrage ist bereits gespeichert
-      }
-
-      setStatus('success');
-      setForm({ name: '', email: '', phone: '', event_date: '', event_location: '', message: '' });
-      onSelectPackage(selectedPackage);
-    } catch (err) {
-      setStatus('error');
-      setErrorMsg('Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
-    }
+    setForm({ name: '', email: '', phone: '', event_date: '', event_location: '', message: '' });
+    onSelectPackage(selectedPackage);
   };
 
   return (
@@ -124,13 +96,13 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     <p className="text-sm font-medium text-white">+49 170 1234567</p>
                   </div>
                 </a>
-                <a href="mailto:info@dbv-veranstaltungstechnik.de" className="flex items-center gap-4 group">
+                <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-4 group">
                   <div className="flex h-11 w-11 items-center justify-center bg-white/[0.05] group-hover:bg-accent transition-colors">
                     <Mail className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <p className="text-xs text-white/40">E-Mail</p>
-                    <p className="text-sm font-medium text-white">info@dbv-veranstaltungstechnik.de</p>
+                    <p className="text-sm font-medium text-white">{CONTACT_EMAIL}</p>
                   </div>
                 </a>
                 <div className="flex items-center gap-4">
@@ -232,18 +204,18 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-ink-200">Event-Ort</label>
+                <label className="mb-2 block text-sm font-medium text-white/70">Event-Ort</label>
                 <input
                   type="text"
                   value={form.event_location}
                   onChange={(e) => setForm({ ...form, event_location: e.target.value })}
-                  className="w-full rounded-xl bg-ink-900/60 border border-ink-600 px-4 py-3 text-sm text-white placeholder-ink-400 focus:border-accent-400 focus:outline-none focus:ring-1 focus:ring-accent-400 transition-colors"
+                  className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                   placeholder="z.B. Stuttgart, Eventhalle"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-ink-200">Nachricht</label>
+                <label className="mb-2 block text-sm font-medium text-white/70">Nachricht</label>
                 <textarea
                   rows={4}
                   value={form.message}
@@ -263,26 +235,16 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
               {status === 'success' && (
                 <div className="flex items-center gap-3 bg-green-500/10 border border-green-500/30 px-4 py-3 text-sm text-green-300">
                   <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
-                  <span>Anfrage erfolgreich gesendet! Wir melden uns in Kürze.</span>
+                  <span>Ihr E-Mail-Programm öffnet sich mit der vorbereiteten Anfrage. Bitte senden Sie diese ab.</span>
                 </div>
               )}
 
               <button
                 type="submit"
-                disabled={status === 'loading'}
-                className="group flex w-full items-center justify-center gap-2 bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent disabled:opacity-60 disabled:cursor-not-allowed"
+                className="group flex w-full items-center justify-center gap-2 bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent"
               >
-                {status === 'loading' ? (
-                  <>
-                    <Loader2 className="h-5 w-5 animate-spin" />
-                    Wird gesendet...
-                  </>
-                ) : (
-                  <>
-                    Anfrage senden
-                    <Send className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </>
-                )}
+                Anfrage senden
+                <Send className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </form>
           </div>
