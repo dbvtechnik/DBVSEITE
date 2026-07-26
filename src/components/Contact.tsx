@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Send, CheckCircle2, AlertCircle, Mail, Phone, MapPin, Calendar, Package } from 'lucide-react';
+import { Send, CheckCircle2, AlertCircle, Mail, Phone, MapPin, Calendar, Package, Loader2 } from 'lucide-react';
 import { packages, type PackageId } from '../data';
+import { supabase } from '../lib/supabase';
 
 interface Props {
   selectedPackage: PackageId | null;
@@ -20,6 +21,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
   });
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     if (selectedPackage) {
@@ -33,7 +35,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
 
   const selectedPkg = packages.find((p) => p.id === selectedPackage);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedPackage) {
       setStatus('error');
@@ -46,25 +48,51 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
       return;
     }
 
-    const lines = [
-      `Paket: ${selectedPkg?.name ?? selectedPackage}`,
-      `Name: ${form.name.trim()}`,
-      `E-Mail: ${form.email.trim()}`,
-      form.phone.trim() && `Telefon: ${form.phone.trim()}`,
-      form.event_date && `Eventdatum: ${form.event_date}`,
-      form.event_location.trim() && `Event-Ort: ${form.event_location.trim()}`,
-      '',
-      form.message.trim(),
-    ].filter(Boolean);
-
-    const subject = `Anfrage: ${selectedPkg?.name ?? 'Event'} – ${form.name.trim()}`;
-    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
-
-    window.location.href = mailto;
-    setStatus('success');
+    setSubmitting(true);
+    setStatus('idle');
     setErrorMsg('');
-    setForm({ name: '', email: '', phone: '', event_date: '', event_location: '', message: '' });
-    onSelectPackage(selectedPackage);
+
+    try {
+      const { data, error } = await supabase
+        .from('inquiries')
+        .insert({
+          name: form.name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim() || null,
+          event_date: form.event_date || null,
+          event_location: form.event_location.trim() || null,
+          package: selectedPkg?.name ?? selectedPackage,
+          message: form.message.trim() || null,
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      const inquiry = data as { name: string; email: string; phone: string | null; event_date: string | null; event_location: string | null; package: string; message: string | null };
+
+      try {
+        await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-inquiry-notification`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          },
+          body: JSON.stringify({ inquiry }),
+        });
+      } catch {
+        // Email notification is best-effort; the inquiry is already saved.
+      }
+
+      setStatus('success');
+      setForm({ name: '', email: '', phone: '', event_date: '', event_location: '', message: '' });
+      onSelectPackage(selectedPackage);
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg(err instanceof Error ? err.message : 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -235,16 +263,26 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
               {status === 'success' && (
                 <div className="flex items-center gap-3 rounded-xl bg-green-500/10 border border-green-500/30 px-4 py-3 text-sm text-green-300">
                   <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
-                  <span>Ihr E-Mail-Programm öffnet sich mit der vorbereiteten Anfrage. Bitte senden Sie diese ab.</span>
+                  <span>Ihre Anfrage wurde übermittelt. Wir melden uns schnellstmöglich bei Ihnen.</span>
                 </div>
               )}
 
               <button
                 type="submit"
-                className="group flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent"
+                disabled={submitting}
+                className="group flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Anfrage senden
-                <Send className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                {submitting ? (
+                  <>
+                    Wird gesendet…
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Anfrage senden
+                    <Send className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </button>
             </form>
           </div>
