@@ -87,13 +87,13 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
             <div className="card p-8">
               <h3 className="font-display text-xl font-semibold mb-6">Direkter Kontakt</h3>
               <div className="space-y-5">
-                <a href="tel:+491701234567" className="flex items-center gap-4 group">
+                <a href="tel:+4915121931491" className="flex items-center gap-4 group">
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors">
                     <Phone className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <p className="text-xs text-white/40">Telefon</p>
-                    <p className="text-sm font-medium text-white">+49 170 1234567</p>
+                    <p className="text-sm font-medium text-white">+49 1512 1931491</p>
                   </div>
                 </a>
                 <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-4 group">
@@ -186,7 +186,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
-                    placeholder="+49 170 1234567"
+                    placeholder="+49 1512 1931491"
                   />
                 </div>
                 <div>
