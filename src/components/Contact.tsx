@@ -73,11 +73,11 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
       }
 
       try {
-        await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-inquiry-notification`, {
+        await fetch('https://eqobubucyxgrqllgrrov.supabase.co/functions/v1/send-inquiry-notification', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVxb2J1YnVjeXhncnFsbGdycm92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzOTI4NzcsImV4cCI6MjA5Nzk2ODg3N30.bHeDi_F3ljTZcfesRXR4q6T5Ixtsr3awusuQpV-rXwM',
           },
           body: JSON.stringify({ inquiry: inquiryPayload }),
         });
