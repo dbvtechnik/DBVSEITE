@@ -52,24 +52,22 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
     setStatus('idle');
     setErrorMsg('');
 
+    const inquiryPayload = {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim() || null,
+      event_date: form.event_date || null,
+      event_location: form.event_location.trim() || null,
+      package: selectedPkg?.name ?? selectedPackage,
+      message: form.message.trim() || null,
+    };
+
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('inquiries')
-        .insert({
-          name: form.name.trim(),
-          email: form.email.trim(),
-          phone: form.phone.trim() || null,
-          event_date: form.event_date || null,
-          event_location: form.event_location.trim() || null,
-          package: selectedPkg?.name ?? selectedPackage,
-          message: form.message.trim() || null,
-        })
-        .select()
-        .single();
+        .insert(inquiryPayload);
 
       if (error) throw error;
-
-      const inquiry = data as { name: string; email: string; phone: string | null; event_date: string | null; event_location: string | null; package: string; message: string | null };
 
       try {
         await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-inquiry-notification`, {
@@ -78,7 +76,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
           },
-          body: JSON.stringify({ inquiry }),
+          body: JSON.stringify({ inquiry: inquiryPayload }),
         });
       } catch {
         // Email notification is best-effort; the inquiry is already saved.
