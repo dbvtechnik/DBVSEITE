@@ -67,7 +67,10 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
         .from('inquiries')
         .insert(inquiryPayload);
 
-      if (error) throw error;
+      if (error) {
+        console.error('[Contact] Supabase insert error:', JSON.stringify(error, null, 2));
+        throw error;
+      }
 
       try {
         await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-inquiry-notification`, {
@@ -78,16 +81,20 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
           },
           body: JSON.stringify({ inquiry: inquiryPayload }),
         });
-      } catch {
-        // Email notification is best-effort; the inquiry is already saved.
+      } catch (notifyErr) {
+        console.warn('[Contact] Notification fetch failed (non-blocking):', notifyErr);
       }
 
       setStatus('success');
       setForm({ name: '', email: '', phone: '', event_date: '', event_location: '', message: '' });
       onSelectPackage(selectedPackage);
     } catch (err) {
+      console.error('[Contact] Submit error:', err);
       setStatus('error');
-      setErrorMsg(err instanceof Error ? err.message : 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
+      const msg = err && typeof err === 'object' && 'message' in err
+        ? String((err as { message: unknown }).message)
+        : 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.';
+      setErrorMsg(msg);
     } finally {
       setSubmitting(false);
     }
