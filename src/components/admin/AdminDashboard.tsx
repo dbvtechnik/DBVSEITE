@@ -262,17 +262,27 @@ export default function AdminDashboard({ onLogout, onBack }: Props) {
                           {STATUS_LABELS[q.status]}
                         </span>
                       </td>
-                      <td className="px-4 py-3 text-right" onClick={(e) => e.stopPropagation()}>
-                        <select
-                          value={q.status}
-                          onChange={(e) => updateStatus(q.id, e.target.value as InquiryStatus)}
-                          disabled={updatingId === q.id}
-                          className="rounded-lg bg-white/[0.04] border border-white/[0.08] px-2 py-1 text-xs text-white focus:border-accent/50 focus:outline-none disabled:opacity-50"
-                        >
-                          <option value="neu" className="bg-ink-800">Neu</option>
-                          <option value="in_bearbeitung" className="bg-ink-800">In Bearbeitung</option>
-                          <option value="erledigt" className="bg-ink-800">Erledigt</option>
-                        </select>
+                      <td className="px-4 py-3">
+                        <div className="flex items-center justify-end gap-2" onClick={(e) => e.stopPropagation()}>
+                          <select
+                            value={q.status}
+                            onChange={(e) => updateStatus(q.id, e.target.value as InquiryStatus)}
+                            disabled={updatingId === q.id}
+                            className="rounded-lg bg-white/[0.04] border border-white/[0.08] px-2 py-1 text-xs text-white focus:border-accent/50 focus:outline-none disabled:opacity-50"
+                          >
+                            <option value="neu" className="bg-ink-800">Neu</option>
+                            <option value="in_bearbeitung" className="bg-ink-800">In Bearbeitung</option>
+                            <option value="erledigt" className="bg-ink-800">Erledigt</option>
+                          </select>
+                          <button
+                            onClick={() => deleteInquiry(q.id)}
+                            disabled={deletingId === q.id}
+                            title="Anfrage löschen"
+                            className="rounded-lg p-1.5 text-red-400/60 hover:text-red-300 hover:bg-red-500/10 transition-all disabled:opacity-50"
+                          >
+                            {deletingId === q.id ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -299,6 +309,26 @@ export default function AdminDashboard({ onLogout, onBack }: Props) {
                   </div>
                   <p className="text-sm text-white/60">{q.package}</p>
                   <p className="text-sm text-white/40 mt-1">{q.email}</p>
+                  <div className="mt-3 flex items-center justify-between gap-2" onClick={(e) => e.stopPropagation()}>
+                    <select
+                      value={q.status}
+                      onChange={(e) => updateStatus(q.id, e.target.value as InquiryStatus)}
+                      disabled={updatingId === q.id}
+                      className="rounded-lg bg-white/[0.04] border border-white/[0.08] px-2 py-1 text-xs text-white focus:border-accent/50 focus:outline-none disabled:opacity-50"
+                    >
+                      <option value="neu" className="bg-ink-800">Neu</option>
+                      <option value="in_bearbeitung" className="bg-ink-800">In Bearbeitung</option>
+                      <option value="erledigt" className="bg-ink-800">Erledigt</option>
+                    </select>
+                    <button
+                      onClick={() => deleteInquiry(q.id)}
+                      disabled={deletingId === q.id}
+                      className="flex items-center gap-1.5 rounded-lg bg-red-500/10 border border-red-500/30 px-3 py-1.5 text-xs font-medium text-red-300 hover:bg-red-500/20 transition-all disabled:opacity-50"
+                    >
+                      {deletingId === q.id ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Trash2 className="h-3.5 w-3.5" />}
+                      Löschen
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
