@@ -9,6 +9,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
+import Impressum from './components/Impressum';
 import { supabase } from './lib/supabase';
 import type { PackageId } from './data';
 
@@ -36,6 +37,10 @@ function App() {
     })();
     return () => { mounted = false; };
   }, [route]);
+
+  if (route === '/impressum') {
+    return <Impressum />;
+  }
 
   if (route.startsWith('/admin')) {
     if (authed === null) {
