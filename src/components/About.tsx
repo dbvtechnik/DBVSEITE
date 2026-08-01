@@ -20,15 +20,18 @@ export default function About() {
             </h2>
             <div className="mt-6 space-y-4 text-white/50 leading-relaxed">
               <p>
-                Wir sind DBV Veranstaltungstechnik – ein junges, motiviertes Team aus
-                Filderstadt, das mit Leidenschaft und modernster Technik für unvergessliche
-                Events sorgt. Von den ersten Gehversuchen bis heute haben wir bereits über
-                20 Veranstaltungen erfolgreich umgesetzt.
+                Wir sind DBV Veranstaltungstechnik – drei 16-jährige mit Leidenschaft
+                und Erfahrung, die mit modernster Technik für unvergessliche Events
+                sorgen. Was als Hobby begonnen hat, ist heute unser Berufung: über 20
+                Veranstaltungen haben wir bereits erfolgreich umgesetzt.
               </p>
               <p>
-                Unser Team aus DJs, Tontechnikern und Lichtplanern arbeitet mit
-                hochwertiger Ausrüstung und höchstem Qualitätsanspruch. Jedes Event
-                ist einzigartig – und genau so behandeln wir es auch.
+                Unser junges Alter bedeutet nicht fehlende Erfahrung – im Gegenteil.
+                Wir bringen frische Ideen, technisches Know-how und die Energie mit,
+                die jede Party braucht. Mit hochwertiger Ausrüstung und höchstem
+                Qualitätsanspruch arbeiten wir als Team aus DJs, Tontechnikern und
+                Lichtplanern. Jedes Event ist einzigartig – und genau so behandeln
+                wir es auch.
               </p>
               <p>
                 Von der privaten Feier über Hochzeiten bis hin zu Firmenveranstaltungen:
