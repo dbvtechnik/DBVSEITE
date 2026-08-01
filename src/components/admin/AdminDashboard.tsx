@@ -159,6 +159,17 @@ export default function AdminDashboard({ onLogout, onBack }: Props) {
       </header>
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 py-8">
+        {/* Team info */}
+        <div className="mb-8 flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5">
+          <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-accent/15 border border-accent/25">
+            <span className="font-display text-lg font-bold text-accent">3</span>
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-white">DBV Veranstaltungstechnik</p>
+            <p className="text-xs text-white/50 mt-0.5">Drei 16-jährige mit Leidenschaft und Erfahrung – über 20 Veranstaltungen erfolgreich umgesetzt.</p>
+          </div>
+        </div>
+
         {/* Stat cards */}
         <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-8">
           {statCards.map((s) => (
