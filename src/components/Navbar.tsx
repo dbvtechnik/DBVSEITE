@@ -4,7 +4,6 @@ import { Menu, X } from 'lucide-react';
 const navLinks = [
   { label: 'Leistungen', href: '#leistungen' },
   { label: 'Pakete', href: '#pakete' },
-  { label: 'Galerie', href: '#galerie' },
   { label: 'Über uns', href: '#ueber' },
   { label: 'Kontakt', href: '#kontakt' },
 ];
