@@ -21,7 +21,7 @@ export default function Footer() {
               className="text-white/40 hover:text-white transition-colors"
               aria-label="Instagram @dbv_veranstaltungstechnik"
             >
-              <Instagram className="h-5 w-5" />
+              <Instagram className="h-5 w-5" aria-hidden="true" />
             </a>
             <a
               href="https://www.tiktok.com/@dbvveranstaltungs"
@@ -30,14 +30,14 @@ export default function Footer() {
               className="text-white/40 hover:text-white transition-colors"
               aria-label="TikTok @dbvveranstaltungs"
             >
-              <Music2 className="h-5 w-5" />
+              <Music2 className="h-5 w-5" aria-hidden="true" />
             </a>
             <a
               href="mailto:info@dbv-veranstaltungstechnik.de"
               className="text-white/40 hover:text-white transition-colors"
               aria-label="E-Mail"
             >
-              <Mail className="h-5 w-5" />
+              <Mail className="h-5 w-5" aria-hidden="true" />
             </a>
           </div>
 

@@ -61,7 +61,7 @@ export default function AdminLogin({ onSuccess, onBack }: Props) {
           </div>
 
           {error && (
-            <div className="mb-5 flex items-start gap-3 rounded-xl bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-300">
+            <div className="mb-5 flex items-start gap-3 rounded-xl bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-300" role="alert">
               <AlertCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
               <span>{error}</span>
             </div>
@@ -69,12 +69,13 @@ export default function AdminLogin({ onSuccess, onBack }: Props) {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/50">
+              <label htmlFor="admin-email" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/50">
                 E-Mail
               </label>
               <div className="relative">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/30" />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/30" aria-hidden="true" />
                 <input
+                  id="admin-email"
                   type="email"
                   required
                   value={email}
@@ -86,12 +87,13 @@ export default function AdminLogin({ onSuccess, onBack }: Props) {
             </div>
 
             <div>
-              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/50">
+              <label htmlFor="admin-password" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-white/50">
                 Passwort
               </label>
               <div className="relative">
-                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/30" />
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/30" aria-hidden="true" />
                 <input
+                  id="admin-password"
                   type="password"
                   required
                   value={password}

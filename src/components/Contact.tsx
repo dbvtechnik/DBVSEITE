@@ -120,18 +120,18 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
             <div className="card p-8">
               <h3 className="font-display text-xl font-semibold mb-6">Direkter Kontakt</h3>
               <div className="space-y-5">
-                <a href="tel:+4915121931491" className="flex items-center gap-4 group">
+                <a href="tel:+4915121931491" className="flex items-center gap-4 group" aria-label="Telefon: +49 1512 1931491">
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors">
-                    <Phone className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
+                    <Phone className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-xs text-white/40">Telefon</p>
                     <p className="text-sm font-medium text-white">+49 1512 1931491</p>
                   </div>
                 </a>
-                <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-4 group">
+                <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-4 group" aria-label={`E-Mail: ${CONTACT_EMAIL}`}>
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors">
-                    <Mail className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
+                    <Mail className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-xs text-white/40">E-Mail</p>
@@ -140,7 +140,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                 </a>
                 <div className="flex items-center gap-4">
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05]">
-                    <MapPin className="h-5 w-5 text-white/70" />
+                    <MapPin className="h-5 w-5 text-white/70" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-xs text-white/40">Einsatzgebiet</p>
@@ -165,7 +165,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
               {/* Selected package display */}
               <div>
                 <label className="mb-2 flex items-center gap-2 text-sm font-medium text-white/70">
-                  <Package className="h-4 w-4 text-accent" />
+                  <Package className="h-4 w-4 text-accent" aria-hidden="true" />
                   Gewähltes Paket
                 </label>
                 {selectedPkg ? (
@@ -191,8 +191,9 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-white/70">Name *</label>
+                  <label htmlFor="contact-name" className="mb-2 block text-sm font-medium text-white/70">Name *</label>
                   <input
+                    id="contact-name"
                     type="text"
                     required
                     value={form.name}
@@ -202,8 +203,9 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-white/70">E-Mail *</label>
+                  <label htmlFor="contact-email" className="mb-2 block text-sm font-medium text-white/70">E-Mail *</label>
                   <input
+                    id="contact-email"
                     type="email"
                     required
                     value={form.email}
@@ -213,8 +215,9 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-white/70">Telefon</label>
+                  <label htmlFor="contact-phone" className="mb-2 block text-sm font-medium text-white/70">Telefon</label>
                   <input
+                    id="contact-phone"
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -223,11 +226,12 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   />
                 </div>
                 <div>
-                  <label className="mb-2 flex items-center gap-2 text-sm font-medium text-white/70">
-                    <Calendar className="h-4 w-4 text-accent" />
+                  <label htmlFor="contact-date" className="mb-2 flex items-center gap-2 text-sm font-medium text-white/70">
+                    <Calendar className="h-4 w-4 text-accent" aria-hidden="true" />
                     Eventdatum
                   </label>
                   <input
+                    id="contact-date"
                     type="date"
                     value={form.event_date}
                     onChange={(e) => setForm({ ...form, event_date: e.target.value })}
@@ -237,8 +241,9 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-white/70">Event-Ort</label>
+                <label htmlFor="contact-location" className="mb-2 block text-sm font-medium text-white/70">Event-Ort</label>
                 <input
+                  id="contact-location"
                   type="text"
                   value={form.event_location}
                   onChange={(e) => setForm({ ...form, event_location: e.target.value })}
@@ -248,8 +253,9 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-white/70">Nachricht</label>
+                <label htmlFor="contact-message" className="mb-2 block text-sm font-medium text-white/70">Nachricht</label>
                 <textarea
+                  id="contact-message"
                   rows={4}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -259,14 +265,14 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
               </div>
 
               {status === 'error' && (
-                <div className="flex items-center gap-3 rounded-xl bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-300">
+                <div role="alert" className="flex items-center gap-3 rounded-xl bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-300">
                   <AlertCircle className="h-5 w-5 flex-shrink-0" />
                   <span>{errorMsg}</span>
                 </div>
               )}
 
               {status === 'success' && (
-                <div className="flex items-center gap-3 rounded-xl bg-green-500/10 border border-green-500/30 px-4 py-3 text-sm text-green-300">
+                <div role="status" className="flex items-center gap-3 rounded-xl bg-green-500/10 border border-green-500/30 px-4 py-3 text-sm text-green-300">
                   <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
                   <span>Ihre Anfrage wurde übermittelt. Wir melden uns schnellstmöglich bei Ihnen.</span>
                 </div>
@@ -285,7 +291,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                 ) : (
                   <>
                     Anfrage senden
-                    <Send className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <Send className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                   </>
                 )}
               </button>

@@ -62,8 +62,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-ink-950">
+      <a href="#hauptinhalt" className="skip-link">Zum Inhalt springen</a>
       <Navbar />
-      <main>
+      <main id="hauptinhalt">
         <Hero />
         <Services />
         <Packages selectedPackage={selectedPackage} onSelectPackage={setSelectedPackage} />

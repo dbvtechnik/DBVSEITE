@@ -37,18 +37,18 @@ export default function Impressum() {
           <section>
             <h2 className="font-display text-2xl font-bold text-white mb-4">Kontakt</h2>
             <div className="glass-strong p-6 space-y-4">
-              <a href={PHONE_HREF} className="flex items-center gap-4 group">
+              <a href={PHONE_HREF} className="flex items-center gap-4 group" aria-label="Telefon: +49 1512 1931491">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors">
-                  <Phone className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
+                  <Phone className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-xs text-white/40">Telefon</p>
                   <p className="text-sm font-medium text-white">{PHONE}</p>
                 </div>
               </a>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-4 group">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-4 group" aria-label={`E-Mail: ${CONTACT_EMAIL}`}>
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors">
-                  <Mail className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
+                  <Mail className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-xs text-white/40">E-Mail</p>
@@ -57,7 +57,7 @@ export default function Impressum() {
               </a>
               <div className="flex items-center gap-4">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05]">
-                  <MapPin className="h-5 w-5 text-white/70" />
+                  <MapPin className="h-5 w-5 text-white/70" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-xs text-white/40">Anschrift</p>

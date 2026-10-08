@@ -49,7 +49,7 @@ export default function About() {
                 className="card p-8 text-center hover:bg-white/[0.06] transition-colors"
               >
                 <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.05]">
-                  <stat.icon className="h-6 w-6 text-white/70" />
+                  <stat.icon className="h-6 w-6 text-white/70" aria-hidden="true" />
                 </div>
                 <div className="font-display text-3xl font-bold text-white">{stat.value}</div>
                 <div className="mt-1.5 text-[11px] uppercase tracking-[0.25em] text-white/40">{stat.label}</div>

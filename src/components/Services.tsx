@@ -76,7 +76,7 @@ export default function Services() {
             >
               <div className="flex items-start justify-between mb-6">
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors duration-300">
-                  <service.icon className="h-6 w-6 text-white/70 group-hover:text-white transition-colors duration-300" />
+                  <service.icon className="h-6 w-6 text-white/70 group-hover:text-white transition-colors duration-300" aria-hidden="true" />
                 </div>
                 <span className="font-display text-sm font-bold text-white/20 tracking-widest">
                   {service.num}

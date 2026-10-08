@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section id="top" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
       {/* Spotlight beam motif — mirrors the logo's truss + spotlights */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Truss bar */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[420px] h-px bg-white/15" />
         <div className="absolute top-1 left-1/2 -translate-x-1/2 w-[420px] h-px bg-white/5" />
@@ -61,7 +61,7 @@ export default function Hero() {
             className="group inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent"
           >
             Pakete ansehen
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </a>
           <a
             href="#kontakt"
@@ -87,10 +87,10 @@ export default function Hero() {
       </div>
 
       {/* Bottom fade to site bg */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#040404] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#040404] to-transparent" aria-hidden="true" />
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-slow">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-slow" aria-hidden="true">
         <ChevronDown className="h-5 w-5 text-white/30" />
       </div>
     </section>

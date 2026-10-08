@@ -38,7 +38,17 @@ export default function Packages({ selectedPackage, onSelectPackage }: Props) {
             return (
               <div
                 key={pkg.id}
+                role="button"
+                tabIndex={0}
                 onClick={() => onSelectPackage(pkg.id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onSelectPackage(pkg.id);
+                  }
+                }}
+                aria-pressed={isSelected}
+                aria-label={`Paket ${pkg.name} ${isSelected ? 'ausgewählt' : 'auswählen'}`}
                 className={`group relative cursor-pointer p-8 border rounded-2xl transition-all duration-300 hover:-translate-y-1 ${
                   pkg.highlighted
                     ? 'bg-white/[0.05] border-accent/40 glow-accent'
@@ -53,13 +63,13 @@ export default function Packages({ selectedPackage, onSelectPackage }: Props) {
 
                 {isSelected && (
                   <div className="absolute top-4 right-4 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-white">
-                    <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                    <Check className="h-3.5 w-3.5" strokeWidth={3} aria-hidden="true" />
                   </div>
                 )}
 
                 <div className="relative">
                   <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors duration-300">
-                    <Icon className="h-6 w-6 text-white/70 group-hover:text-white transition-colors duration-300" />
+                    <Icon className="h-6 w-6 text-white/70 group-hover:text-white transition-colors duration-300" aria-hidden="true" />
                   </div>
 
                   <h3 className="font-display text-2xl font-bold">{pkg.name}</h3>
@@ -69,7 +79,7 @@ export default function Packages({ selectedPackage, onSelectPackage }: Props) {
                   <ul className="mt-6 space-y-3">
                     {pkg.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3 text-sm text-white/70">
-                        <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" strokeWidth={2.5} />
+                        <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" strokeWidth={2.5} aria-hidden="true" />
                         <span>{feature}</span>
                       </li>
                     ))}
