@@ -22,8 +22,8 @@ const services = [
     icon: Music,
     title: 'DJ Service',
     description:
-      'Erfahrene DJs mit breitem Musikspektrum – von Charts über Classics bis Spezialgenres. Wunschtitel im Vorfeld willkommen, Technik inklusive.',
-    tags: ['Top 100', '80er/90er', 'Black/Schlager', 'Open Format'],
+      'Erfahrene DJs für jede Veranstaltung. Wunschtitel im Vorfeld willkommen, Technik inklusive.',
+    tags: ['Wunschliste', 'Professionelles Setup', 'Full-Service'],
   },
   {
     num: '04',
