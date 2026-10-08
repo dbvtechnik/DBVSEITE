@@ -104,6 +104,81 @@ export default function Impressum() {
               </p>
             </div>
           </section>
+
+          <section>
+            <h2 className="font-display text-2xl font-bold text-white mb-4">Erklärung zur Barrierefreiheit</h2>
+            <div className="glass-strong p-6 space-y-4">
+              <p className="text-sm text-white/50 leading-relaxed">
+                Als junges Unternehmen ist uns bewusst, dass der Zugang zu digitalen Angeboten für
+                alle Menschen selbstverständlich sein muss. Wir haben diese Website so gestaltet,
+                dass sie weitgehend barrierefrei nutzbar ist – unabhängig von körperlichen,
+                sensorischen oder kognitiven Einschränkungen.
+              </p>
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold text-white/80">Umgesetzte Maßnahmen</h3>
+                <ul className="space-y-2 text-sm text-white/50 leading-relaxed">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                    <span>Alle Formularfelder sind mit Beschriftungen verknüpft, sodass sie von Screenreadern korrekt vorgelesen werden.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                    <span>Die gesamte Website ist per Tastatur bedienbar – alle interaktiven Elemente lassen sich mit der Tab-Taste erreichen und aktivieren.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                    <span>Sichtbare Fokus-Hervorhebungen zeigen, welches Element gerade ausgewählt ist.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                    <span>Ein „Zum Inhalt springen"-Link ermöglicht Tastatur-Nutzern, das Navigationsmenü zu überspringen.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                    <span>Rein dekorative Grafiken und Effekte sind für assistive Technologien ausgeblendet.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                    <span>Statusmeldungen (Erfolg, Fehler) im Formular werden automatisch von Screenreadern angekündigt.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                    <span>Ausreichende Farbkontraste zwischen Text und Hintergrund für gute Lesbarkeit.</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold text-white/80">Bekannte Einschränkungen</h3>
+                <p className="text-sm text-white/50 leading-relaxed">
+                  Trotz unserer Bemühungen können einzelne Bereiche noch nicht vollständig
+                  barrierefrei sein. Wir arbeiten kontinuierlich daran, die Zugänglichkeit weiter
+                  zu verbessern. Sollten Sie Probleme bei der Nutzung dieser Website feststellen,
+                  kontaktieren Sie uns bitte – wir prüfen Ihr Feedback und setzen Verbesserungen
+                  schnellstmöglich um.
+                </p>
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold text-white/80">Kontakt bei Barriere-Problemen</h3>
+                <p className="text-sm text-white/50 leading-relaxed">
+                  Wenn Sie Mängel in Bezug auf die Barrierefreiheit bemerken oder Informationen zu
+                  Inhalten benötigen, die nicht barrierefrei zugänglich sind, erreichen Sie uns unter:
+                </p>
+                <div className="rounded-xl bg-white/[0.03] border border-white/[0.08] px-4 py-3 space-y-1">
+                  <p className="text-sm text-white/70"><span className="text-white/40">E-Mail:</span> {CONTACT_EMAIL}</p>
+                  <p className="text-sm text-white/70"><span className="text-white/40">Telefon:</span> {PHONE}</p>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-sm font-semibold text-white/80">Durchsetzungsverfahren</h3>
+                <p className="text-sm text-white/50 leading-relaxed">
+                  Nach § 12 Abs. 1 BGG (Behindertengleichstellungsgesetz) kann die Bundesbehörde für
+                  Barrierefreiheit bei Konflikten im Zusammenhang mit der Barrierefreiheit
+                  in Anspruch genommen werden, wenn keine einvernehmliche Lösung mit dem
+                  Anbieter erreicht werden kann.
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
       </main>
     </div>
