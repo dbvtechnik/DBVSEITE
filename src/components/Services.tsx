@@ -6,24 +6,24 @@ const services = [
     icon: Lightbulb,
     title: 'Lichttechnik',
     description:
-      'Stimmungsvolle Lichtkonzepte mit Moving Heads, LED-Pars, Traversen und Effektmaschinen. DMX-gesteuert für perfekte Szenen – von Gala bis Party.',
-    tags: ['Moving Heads', 'LED-Pars', 'Traversen', 'DMX-Steuerung'],
+      'Stimmungsvolles Licht für Ihre Feier – von sanft und elegant bis ausgelassen und farbenfroh. Wir bringen die richtige Atmosphäre in jeden Raum.',
+    tags: ['Stimmungslicht', 'Strahler', 'Traversen', 'Effekte'],
   },
   {
     num: '02',
     icon: Volume2,
     title: 'Tontechnik',
     description:
-      'Kraftvolle Beschallung für jede Raumgröße. Mischpulte, Mikrofone und Bühnenmonitore für kristallklaren Sound – von der Rede bis zur Live-Band.',
-    tags: ['L-Acoustics', 'Digitalmixer', 'Mikrofone', 'Bühnenmonitore'],
+      'Kraftvolle Beschallung für jede Raumgröße. Kristallklarer Sound für Reden, Hintergrundmusik oder Tanzfläche – angepasst an Ihre Gästezahl.',
+    tags: ['Beschallung', 'Mischpult', 'Mikrofone', 'Monitorboxen'],
   },
   {
     num: '03',
     icon: Music,
     title: 'DJ Service',
     description:
-      'Erfahrene DJs für jede Veranstaltung. Wunschtitel im Vorfeld willkommen, Technik inklusive.',
-    tags: ['Wunschliste', 'Professionelles Setup', 'Full-Service'],
+      'Erfahrene DJs für jede Veranstaltung. Wunschtitel im Vorfeld willkommen, die passende Anlage ist inklusive.',
+    tags: ['Wunschliste', 'Eigene Anlage', 'Full-Service'],
   },
   {
     num: '04',

@@ -50,37 +50,37 @@ export default function Hero() {
 
         {/* Sub text */}
         <p className="mt-6 max-w-lg text-base text-white/40 leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s', opacity: 0 }}>
-          Professionelle Veranstaltungstechnik & DJ-Service aus Filderstadt –
-          für Events, die in Erinnerung bleiben.
+          DJ & Veranstaltungstechnik aus Filderstadt – für Hochzeiten, Geburtstage
+          und Firmenfeiern in Stuttgart und Umgebung.
         </p>
 
         {/* CTAs */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: '0.3s', opacity: 0 }}>
           <a
-            href="#pakete"
+            href="#kontakt"
             className="group inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent"
           >
-            Pakete ansehen
+            Jetzt anfragen
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </a>
           <a
-            href="#kontakt"
+            href="#pakete"
             className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white/80 hover:border-white/50 hover:text-white transition-all"
           >
-            Anfrage stellen
+            Pakete ansehen
           </a>
         </div>
 
         {/* Stats */}
-        <div className="mt-20 flex items-center gap-12 sm:gap-16 text-center animate-fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
+        <div className="mt-16 sm:mt-20 grid grid-cols-3 gap-4 sm:gap-12 sm:flex sm:items-center sm:gap-16 text-center animate-fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
           {[
             { value: '20+', label: 'Events' },
             { value: '2.000+', label: 'Gäste begeistert' },
             { value: '100%', label: 'Zufriedenheit' },
           ].map((stat) => (
             <div key={stat.label}>
-              <div className="font-display text-3xl font-bold text-white">{stat.value}</div>
-              <div className="mt-1.5 text-[11px] uppercase tracking-[0.25em] text-white/40">{stat.label}</div>
+              <div className="font-display text-2xl sm:text-3xl font-bold text-white">{stat.value}</div>
+              <div className="mt-1.5 text-[10px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white/40">{stat.label}</div>
             </div>
           ))}
         </div>

@@ -4,11 +4,13 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Packages from './components/Packages';
 import About from './components/About';
+import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
 import Impressum from './components/Impressum';
+import Datenschutz from './components/Datenschutz';
 import { supabase } from './lib/supabase';
 import type { PackageId } from './data';
 
@@ -41,6 +43,10 @@ function App() {
     return <Impressum />;
   }
 
+  if (route === '/datenschutz') {
+    return <Datenschutz />;
+  }
+
   if (route.startsWith('/admin')) {
     if (authed === null) {
       return (
@@ -68,6 +74,7 @@ function App() {
         <Hero />
         <Services />
         <Packages selectedPackage={selectedPackage} onSelectPackage={setSelectedPackage} />
+        <Gallery />
         <About />
         <Contact selectedPackage={selectedPackage} onSelectPackage={setSelectedPackage} />
       </main>

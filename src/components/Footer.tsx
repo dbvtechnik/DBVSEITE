@@ -44,6 +44,7 @@ export default function Footer() {
           <div className="flex items-center gap-4 text-sm text-white/40">
             <span>&copy; {new Date().getFullYear()} DBV Veranstaltungstechnik</span>
             <a href="#/impressum" className="hover:text-white transition-colors">Impressum</a>
+            <a href="#/datenschutz" className="hover:text-white transition-colors">Datenschutz</a>
           </div>
         </div>
       </div>

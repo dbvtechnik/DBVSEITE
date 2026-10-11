@@ -25,7 +25,7 @@ export const packages: PackageInfo[] = [
     description:
       'DJ, Licht- und Tontechnik aus einer Hand. Wir übernehmen die komplette technische Umsetzung Ihres Events – vom Konzept bis zur letzten Minute.',
     features: [
-      'Professioneller DJ mit jahrelanger Erfahrung',
+      'Erfahrener DJ mit umfangreicher Musikbibliothek',
       'Lichtanlage mit Moving Heads & Effekten',
       'Tontechnik für bis zu 200 Gäste',
       'Traversensystem',

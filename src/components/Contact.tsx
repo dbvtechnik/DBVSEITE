@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Send, CheckCircle2, AlertCircle, Mail, Phone, MapPin, Calendar, Package, Loader2 } from 'lucide-react';
+import { Send, CheckCircle2, AlertCircle, Mail, Phone, MapPin, Calendar, Package, Loader2, MessageCircle, Users } from 'lucide-react';
 import { packages, type PackageId } from '../data';
 import { supabase } from '../lib/supabase';
 
@@ -9,6 +9,18 @@ interface Props {
 }
 
 const CONTACT_EMAIL = 'info@dbv-veranstaltungstechnik.de';
+const PHONE = '+49 1512 1931491';
+const WHATSAPP_NUMBER = '4915121931491';
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hallo DBV Veranstaltungstechnik, ich habe eine Anfrage für ein Event:')}`;
+
+const EVENT_TYPES = [
+  'Hochzeit',
+  'Geburtstag',
+  'Firmenfeier',
+  'Vereinsfest',
+  'Party',
+  'Sonstiges',
+];
 
 export default function Contact({ selectedPackage, onSelectPackage }: Props) {
   const [form, setForm] = useState({
@@ -17,6 +29,8 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
     phone: '',
     event_date: '',
     event_location: '',
+    event_type: '',
+    guest_count: '',
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -58,6 +72,8 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
       phone: form.phone.trim() || null,
       event_date: form.event_date || null,
       event_location: form.event_location.trim() || null,
+      event_type: form.event_type || null,
+      guest_count: form.guest_count ? parseInt(form.guest_count, 10) : null,
       package: selectedPkg?.name ?? selectedPackage,
       message: form.message.trim() || null,
     };
@@ -86,7 +102,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
       }
 
       setStatus('success');
-      setForm({ name: '', email: '', phone: '', event_date: '', event_location: '', message: '' });
+      setForm({ name: '', email: '', phone: '', event_date: '', event_location: '', event_type: '', guest_count: '', message: '' });
       onSelectPackage(selectedPackage);
     } catch (err) {
       console.error('[Contact] Submit error:', err);
@@ -106,8 +122,8 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="section-label">Kontakt</span>
           <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold leading-tight">
-            Anfrage
-            <span className="text-gradient"> senden</span>
+            Jetzt
+            <span className="text-gradient"> anfragen</span>
           </h2>
           <p className="mt-5 text-white/50 text-lg">
             Erzählen Sie uns von Ihrem Event. Wir melden uns innerhalb von 24 Stunden.
@@ -126,7 +142,22 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   </div>
                   <div>
                     <p className="text-xs text-white/40">Telefon</p>
-                    <p className="text-sm font-medium text-white">+49 1512 1931491</p>
+                    <p className="text-sm font-medium text-white">{PHONE}</p>
+                  </div>
+                </a>
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 group"
+                  aria-label="WhatsApp: +49 1512 1931491"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-green-500 transition-colors">
+                    <MessageCircle className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/40">WhatsApp</p>
+                    <p className="text-sm font-medium text-white">Direkt schreiben</p>
                   </div>
                 </a>
                 <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-4 group" aria-label={`E-Mail: ${CONTACT_EMAIL}`}>
@@ -154,7 +185,8 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
               <h3 className="font-display text-lg font-semibold mb-3">Antwortzeiten</h3>
               <p className="text-sm text-white/50 leading-relaxed">
                 Anfragen werden in der Regel innerhalb von 24 Stunden beantwortet.
-                Für kurzfristige Anfragen erreichen Sie uns am schnellsten telefonisch.
+                Für kurzfristige Anfragen erreichen Sie uns am schnellsten telefonisch
+                oder per WhatsApp.
               </p>
             </div>
           </div>
@@ -236,6 +268,35 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     value={form.event_date}
                     onChange={(e) => setForm({ ...form, event_date: e.target.value })}
                     className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark]"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-type" className="mb-2 block text-sm font-medium text-white/70">Art der Veranstaltung</label>
+                  <select
+                    id="contact-type"
+                    value={form.event_type}
+                    onChange={(e) => setForm({ ...form, event_type: e.target.value })}
+                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark]"
+                  >
+                    <option value="" className="bg-ink-800">Bitte wählen…</option>
+                    {EVENT_TYPES.map((type) => (
+                      <option key={type} value={type} className="bg-ink-800">{type}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="contact-guests" className="mb-2 flex items-center gap-2 text-sm font-medium text-white/70">
+                    <Users className="h-4 w-4 text-accent" aria-hidden="true" />
+                    Gästezahl
+                  </label>
+                  <input
+                    id="contact-guests"
+                    type="number"
+                    min="1"
+                    value={form.guest_count}
+                    onChange={(e) => setForm({ ...form, guest_count: e.target.value })}
+                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                    placeholder="z.B. 80"
                   />
                 </div>
               </div>

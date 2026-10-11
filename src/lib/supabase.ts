@@ -25,6 +25,8 @@ export interface Inquiry {
   phone: string | null;
   event_date: string | null;
   event_location: string | null;
+  event_type: string | null;
+  guest_count: number | null;
   package: string;
   message: string | null;
   status: InquiryStatus;

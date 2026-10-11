@@ -22,7 +22,7 @@ export default function About() {
               <p>
                 Wir sind DBV Veranstaltungstechnik – drei 16-jährige mit Leidenschaft
                 und Erfahrung, die mit modernster Technik für unvergessliche Events
-                sorgen. Was als Hobby begonnen hat, ist heute unser Berufung: über 20
+                sorgen. Was als Hobby begonnen hat, ist heute unsere Berufung: über 20
                 Veranstaltungen haben wir bereits erfolgreich umgesetzt.
               </p>
               <p>

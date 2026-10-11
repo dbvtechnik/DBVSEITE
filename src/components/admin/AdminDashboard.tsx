@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   LogOut, Search, Mail, Phone, Calendar, MapPin, Package, X,
   Inbox, Clock, CheckCircle2, Loader2, AlertCircle, ArrowLeft, RefreshCw, Trash2,
+  Users, Tag,
 } from 'lucide-react';
 import { supabase, type Inquiry, type InquiryStatus } from '../../lib/supabase';
 
@@ -450,6 +451,26 @@ export default function AdminDashboard({ onLogout, onBack }: Props) {
                     <div className="mt-1 flex items-center gap-2">
                       <MapPin className="h-4 w-4 text-white/40" />
                       <p className="text-sm text-white">{selected.event_location}</p>
+                    </div>
+                  </div>
+                )}
+
+                {selected.event_type && (
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-white/40">Veranstaltungsart</span>
+                    <div className="mt-1 flex items-center gap-2">
+                      <Tag className="h-4 w-4 text-white/40" />
+                      <p className="text-sm text-white">{selected.event_type}</p>
+                    </div>
+                  </div>
+                )}
+
+                {selected.guest_count != null && (
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-white/40">Gästezahl</span>
+                    <div className="mt-1 flex items-center gap-2">
+                      <Users className="h-4 w-4 text-white/40" />
+                      <p className="text-sm text-white">{selected.guest_count}</p>
                     </div>
                   </div>
                 )}
