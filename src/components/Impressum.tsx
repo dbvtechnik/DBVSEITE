@@ -1,6 +1,6 @@
 import { ArrowLeft, Mail, Phone, MapPin } from 'lucide-react';
 
-const CONTACT_EMAIL = 'info@dbv-veranstaltungstechnik.de';
+const CONTACT_EMAIL = 'kontakt@dbvtechnik.de';
 const PHONE = '+49 1512 1931491';
 const PHONE_HREF = 'tel:+4915121931491';
 

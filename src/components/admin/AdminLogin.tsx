@@ -80,7 +80,7 @@ export default function AdminLogin({ onSuccess, onBack }: Props) {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="info@dbv-veranstaltungstechnik.de"
+                  placeholder="kontakt@dbvtechnik.de"
                   className="w-full rounded-xl bg-white/[0.04] border border-white/[0.08] pl-11 pr-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all"
                 />
               </div>

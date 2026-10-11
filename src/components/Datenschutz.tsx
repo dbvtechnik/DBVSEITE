@@ -49,7 +49,7 @@ export default function Datenschutz() {
                 <p className="text-sm text-white/70 font-medium">DBV Veranstaltungstechnik</p>
                 <p className="text-sm text-white/50">Felsenstraße 84</p>
                 <p className="text-sm text-white/50">70794 Filderstadt</p>
-                <p className="text-sm text-white/50">E-Mail: info@dbv-veranstaltungstechnik.de</p>
+                <p className="text-sm text-white/50">E-Mail: kontakt@dbvtechnik.de</p>
                 <p className="text-sm text-white/50">Telefon: +49 1512 1931491</p>
               </div>
             </div>

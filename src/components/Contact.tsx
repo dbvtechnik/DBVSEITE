@@ -8,7 +8,7 @@ interface Props {
   onSelectPackage: (id: PackageId) => void;
 }
 
-const CONTACT_EMAIL = 'info@dbv-veranstaltungstechnik.de';
+const CONTACT_EMAIL = 'kontakt@dbvtechnik.de';
 const PHONE = '+49 1512 1931491';
 const WHATSAPP_NUMBER = '4915121931491';
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hallo DBV Veranstaltungstechnik, ich habe eine Anfrage für ein Event:')}`;

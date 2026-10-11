@@ -33,7 +33,7 @@ export default function Footer() {
               <Music2 className="h-5 w-5" aria-hidden="true" />
             </a>
             <a
-              href="mailto:info@dbv-veranstaltungstechnik.de"
+              href="mailto:kontakt@dbvtechnik.de"
               className="text-white/40 hover:text-white transition-colors"
               aria-label="E-Mail"
             >

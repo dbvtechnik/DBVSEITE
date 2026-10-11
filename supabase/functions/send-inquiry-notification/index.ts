@@ -7,7 +7,7 @@ const corsHeaders = {
 };
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") ?? "";
-const NOTIFICATION_EMAIL = "info@dbv-veranstaltungstechnik.de";
+const NOTIFICATION_EMAIL = "kontakt@dbvtechnik.de";
 
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
