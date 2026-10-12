@@ -24,11 +24,11 @@ export default function Footer() {
               <Instagram className="h-5 w-5" aria-hidden="true" />
             </a>
             <a
-              href="https://www.tiktok.com/@dbvveranstaltungs"
+              href="https://www.tiktok.com/@dbvveranstaltungstechnik"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/40 hover:text-white transition-colors"
-              aria-label="TikTok @dbvveranstaltungs"
+              aria-label="TikTok @dbvveranstaltungstechnik"
             >
               <Music2 className="h-5 w-5" aria-hidden="true" />
             </a>
