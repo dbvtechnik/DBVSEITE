@@ -5,7 +5,7 @@
  */
 export const business = {
   name: 'DBV Veranstaltungstechnik',
-  owners: [] as string[],
+  owners: ['Fabian Aschenbrenner'] as string[],
   legalForm: '',
   vatId: '',
   street: 'Felsenstraße 84',

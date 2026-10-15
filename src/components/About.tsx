@@ -21,9 +21,8 @@ export default function About() {
                 <p>Hallo,</p>
                 <p>
                   wir sind DBV Veranstaltungstechnik: drei 16-Jährige mit Leidenschaft und Erfahrung, die mit moderner
-                  Technik für unvergessliche Events sorgen. Was als Hobby begonnen hat, ist heute unsere Berufung.{' '}
-                  <mark className="rounded-sm bg-accent/70 px-1 text-ink-950">Über 20 Veranstaltungen</mark> haben wir
-                  bereits erfolgreich umgesetzt.
+                  Technik für unvergessliche Events sorgen. Was als Hobby begonnen hat, ist heute{' '}
+                  <mark className="rounded-sm bg-accent/70 px-1 text-ink-950">unsere Berufung</mark>.
                 </p>
                 <p>
                   Unser Alter bedeutet nicht fehlende Erfahrung, im Gegenteil. Wir bringen frische Ideen, technisches
