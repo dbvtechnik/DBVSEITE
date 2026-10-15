@@ -354,6 +354,11 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   </>
                 )}
               </button>
+
+              <p className="text-center text-[13px] leading-relaxed text-white/55">
+                Wir verwenden Ihre Angaben nur, um Ihre Anfrage zu beantworten. Mehr dazu in unserer{' '}
+                <a href="#/datenschutz" className="underline hover:text-white">Datenschutzerklärung</a>.
+              </p>
             </form>
           </div>
         </div>
