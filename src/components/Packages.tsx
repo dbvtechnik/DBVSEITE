@@ -20,7 +20,7 @@ function ChannelLeds({ on }: { on: Channel[] }) {
               className={`h-2.5 w-2.5 rounded-full ${lit ? 'bg-accent shadow-[0_0_10px_2px_rgba(255,181,71,0.5)]' : 'bg-white/15'}`}
               aria-hidden="true"
             />
-            <span className={lit ? 'text-white/85' : 'text-white/35 line-through decoration-white/25'}>{channelLabels[c]}</span>
+            <span className={lit ? 'text-white/85' : 'text-white/55 line-through decoration-white/25'}>{channelLabels[c]}</span>
           </span>
         );
       })}

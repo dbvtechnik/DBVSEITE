@@ -167,7 +167,7 @@ export default function AdminDashboard({ onLogout, onBack }: Props) {
           </div>
           <div>
             <p className="text-sm font-semibold text-white">DBV Veranstaltungstechnik</p>
-            <p className="text-xs text-white/50 mt-0.5">Drei 16-jährige mit Leidenschaft und Erfahrung – über 20 Veranstaltungen erfolgreich umgesetzt.</p>
+            <p className="text-xs text-white/50 mt-0.5">Drei 16-Jährige mit Leidenschaft und Erfahrung.</p>
           </div>
         </div>
 

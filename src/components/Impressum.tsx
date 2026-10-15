@@ -1,8 +1,9 @@
 import { ArrowLeft, Mail, Phone, MapPin } from 'lucide-react';
+import { business } from '../legal';
 
-const CONTACT_EMAIL = 'kontakt@dbvtechnik.de';
-const PHONE = '+49 1512 1931491';
-const PHONE_HREF = 'tel:+4915121931491';
+const CONTACT_EMAIL = business.email;
+const PHONE = business.phone;
+const PHONE_HREF = business.phoneHref;
 
 export default function Impressum() {
   return (
@@ -22,16 +23,34 @@ export default function Impressum() {
 
       <main className="mx-auto max-w-3xl px-4 sm:px-6 py-12">
         <div className="space-y-10">
-          {/* Angaben gemäß § 5 TMG */}
+          {/* Angaben gemäß § 5 DDG */}
           <section>
-            <h2 className="font-display text-2xl font-bold text-white mb-4">Angaben gemäß § 5 TMG</h2>
+            <h2 className="font-display text-2xl font-bold text-white mb-4">Angaben gemäß § 5 DDG</h2>
             <div className="glass-strong p-6 space-y-1">
-              <p className="text-white/80 font-medium">DBV Veranstaltungstechnik</p>
-              <p className="text-white/60">Felsenstraße 84</p>
-              <p className="text-white/60">70794 Filderstadt</p>
-              <p className="text-white/60">Deutschland</p>
+              <p className="text-white/80 font-medium">{business.name}</p>
+              {business.owners.length > 0 && (
+                <p className="text-white/60">
+                  {business.legalForm ? `${business.legalForm}, ` : ''}
+                  Inhaber: 
+                  {business.owners.join(', ')}
+                </p>
+              )}
+              <p className="text-white/60">{business.street}</p>
+              <p className="text-white/60">{business.zip} {business.city}</p>
+              <p className="text-white/60">{business.country}</p>
             </div>
           </section>
+
+          {business.vatId && (
+            <section>
+              <h2 className="font-display text-2xl font-bold text-white mb-4">Umsatzsteuer-ID</h2>
+              <div className="glass-strong p-6">
+                <p className="text-sm text-white/60">
+                  Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: {business.vatId}
+                </p>
+              </div>
+            </section>
+          )}
 
           {/* Kontakt */}
           <section>
@@ -42,7 +61,7 @@ export default function Impressum() {
                   <Phone className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-xs text-white/40">Telefon</p>
+                  <p className="text-xs text-white/60">Telefon</p>
                   <p className="text-sm font-medium text-white">{PHONE}</p>
                 </div>
               </a>
@@ -51,7 +70,7 @@ export default function Impressum() {
                   <Mail className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-xs text-white/40">E-Mail</p>
+                  <p className="text-xs text-white/60">E-Mail</p>
                   <p className="text-sm font-medium text-white">{CONTACT_EMAIL}</p>
                 </div>
               </a>
@@ -60,10 +79,20 @@ export default function Impressum() {
                   <MapPin className="h-5 w-5 text-white/70" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-xs text-white/40">Anschrift</p>
-                  <p className="text-sm font-medium text-white">Felsenstraße 84, 70794 Filderstadt</p>
+                  <p className="text-xs text-white/60">Anschrift</p>
+                  <p className="text-sm font-medium text-white">{business.street}, {business.zip} {business.city}</p>
                 </div>
               </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="font-display text-2xl font-bold text-white mb-4">Verbraucherstreitbeilegung</h2>
+            <div className="glass-strong p-6">
+              <p className="text-sm text-white/50 leading-relaxed">
+                Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
+                Verbraucherschlichtungsstelle teilzunehmen.
+              </p>
             </div>
           </section>
 
@@ -72,8 +101,8 @@ export default function Impressum() {
             <h2 className="font-display text-2xl font-bold text-white mb-4">Haftung für Inhalte</h2>
             <div className="glass-strong p-6">
               <p className="text-sm text-white/50 leading-relaxed">
-                Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten
-                nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
+                Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten
+                nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als
                 Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
                 Informationen zu überwachen oder nach Umständen zu forschen, die auf eine
                 rechtswidrige Tätigkeit hinweisen.
@@ -164,18 +193,9 @@ export default function Impressum() {
                   Inhalten benötigen, die nicht barrierefrei zugänglich sind, erreichen Sie uns unter:
                 </p>
                 <div className="rounded-xl bg-white/[0.03] border border-white/[0.08] px-4 py-3 space-y-1">
-                  <p className="text-sm text-white/70"><span className="text-white/40">E-Mail:</span> {CONTACT_EMAIL}</p>
-                  <p className="text-sm text-white/70"><span className="text-white/40">Telefon:</span> {PHONE}</p>
+                  <p className="text-sm text-white/70"><span className="text-white/60">E-Mail:</span> {CONTACT_EMAIL}</p>
+                  <p className="text-sm text-white/70"><span className="text-white/60">Telefon:</span> {PHONE}</p>
                 </div>
-              </div>
-              <div className="space-y-3">
-                <h3 className="text-sm font-semibold text-white/80">Durchsetzungsverfahren</h3>
-                <p className="text-sm text-white/50 leading-relaxed">
-                  Nach § 12 Abs. 1 BGG (Behindertengleichstellungsgesetz) kann die Bundesbehörde für
-                  Barrierefreiheit bei Konflikten im Zusammenhang mit der Barrierefreiheit
-                  in Anspruch genommen werden, wenn keine einvernehmliche Lösung mit dem
-                  Anbieter erreicht werden kann.
-                </p>
               </div>
             </div>
           </section>
