@@ -5,6 +5,7 @@ import Services from './components/Services';
 import Packages from './components/Packages';
 import About from './components/About';
 import Process from './components/Process';
+import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AdminLogin from './components/admin/AdminLogin';
@@ -77,6 +78,7 @@ function App() {
         <Services />
         <Packages selectedPackage={selectedPackage} onSelectPackage={setSelectedPackage} />
         <Process />
+        <Gallery />
         <About />
         <Contact selectedPackage={selectedPackage} onSelectPackage={setSelectedPackage} />
       </main>

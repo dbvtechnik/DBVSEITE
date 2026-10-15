@@ -5,6 +5,7 @@ const navLinks = [
   { label: 'Leistungen', href: '#leistungen' },
   { label: 'Pakete', href: '#pakete' },
   { label: 'Ablauf', href: '#ablauf' },
+  { label: 'Eindrücke', href: '#eindruecke' },
   { label: 'Über uns', href: '#ueber' },
   { label: 'Kontakt', href: '#kontakt' },
 ];
