@@ -17,14 +17,16 @@ export default {
           200: '#b0b0b0',
           100: '#e0e0e0',
         },
+        // Warmes Bühnenlicht (Halogen/Amber) statt Standard-Blau
         accent: {
-          DEFAULT: '#3b82f6',
-          300: '#93c5fd',
-          400: '#3b82f6',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
+          DEFAULT: '#ffb547',
+          300: '#ffd08a',
+          400: '#ffc266',
+          500: '#ffb547',
+          600: '#f59e0b',
+          700: '#d97706',
         },
+        paper: '#f3eee6',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -35,11 +37,9 @@ export default {
         'extra-wide': '0.35em',
       },
       animation: {
-        'fade-up': 'fadeUp 0.7s ease-out forwards',
+        'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'fade-in': 'fadeIn 0.5s ease-out forwards',
-        'pulse-slow': 'pulse 6s ease-in-out infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'bounce-slow': 'bounce 2.5s infinite',
+        'beam-sway': 'beamSway 9s ease-in-out infinite',
       },
       keyframes: {
         fadeUp: {
@@ -50,9 +50,9 @@ export default {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-12px)' },
+        beamSway: {
+          '0%, 100%': { transform: 'translateX(-50%) rotate(var(--tilt, 0deg))' },
+          '50%': { transform: 'translateX(-50%) rotate(calc(var(--tilt, 0deg) + var(--sway, 4deg)))' },
         },
       },
     },

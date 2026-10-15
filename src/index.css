@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+/* Scheinwerferfarbe im Hero, als Farbe registriert, damit sie weich überblendet */
+@property --beam {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ffd9a3;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,7 +19,14 @@
     @apply bg-[#040404] text-white font-sans antialiased;
   }
   ::selection {
-    @apply bg-accent/30 text-white;
+    @apply bg-accent text-ink-950;
+  }
+  input,
+  textarea {
+    caret-color: theme('colors.accent.DEFAULT');
+  }
+  a {
+    text-underline-offset: 0.2em;
   }
   *:focus-visible {
     @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-[#040404] rounded-sm;
@@ -23,43 +37,67 @@
     z-index: 100;
   }
   .skip-link:focus {
-    @apply top-4 left-4 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white;
+    @apply top-4 left-4 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-ink-950;
     position: fixed;
   }
 }
 
 @layer utilities {
-  .section-label {
-    @apply text-[11px] font-semibold uppercase tracking-[0.3em] text-white/40;
-  }
   .card {
-    @apply bg-white/[0.04] border border-white/[0.08] rounded-2xl;
-  }
-  .card-hover {
-    @apply hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300;
-  }
-  .glow-accent {
-    box-shadow: 0 0 32px -8px rgba(59, 130, 246, 0.45);
-  }
-  .grid-pattern {
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 80px 80px;
-  }
-  /* Keep for legacy compat */
-  .glass {
     @apply bg-white/[0.04] border border-white/[0.08] rounded-2xl;
   }
   .glass-strong {
     @apply bg-white/[0.06] border border-white/[0.12] rounded-2xl;
   }
-  .text-gradient {
-    @apply bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent;
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Scroll-Einblendung: nur wenn JS läuft, damit Inhalte ohne Script sichtbar bleiben */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal] {
+    transform: none;
+    transition: opacity 0.3s linear;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #040404; }
 ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #333; }
+::-webkit-scrollbar-thumb:hover { background: #ffb547; }
+
+/* Lauflicht im Ablauf: Lampe geht an, sobald der Schritt eingeblendet ist */
+.step-lamp {
+  transition:
+    background-color 0.4s ease,
+    box-shadow 0.4s ease;
+  transition-delay: calc(var(--reveal-delay, 0ms) + 300ms);
+}
+.is-in > .step-lamp,
+html:not(.js) .step-lamp {
+  background-color: #ffb547;
+  box-shadow: 0 0 22px 6px rgba(255, 181, 71, 0.45);
+}

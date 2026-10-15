@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Packages from './components/Packages';
 import About from './components/About';
-import Gallery from './components/Gallery';
+import Process from './components/Process';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AdminLogin from './components/admin/AdminLogin';
@@ -12,6 +12,7 @@ import AdminDashboard from './components/admin/AdminDashboard';
 import Impressum from './components/Impressum';
 import Datenschutz from './components/Datenschutz';
 import { supabase } from './lib/supabase';
+import { useReveal } from './lib/useReveal';
 import type { PackageId } from './data';
 
 function useHashRoute() {
@@ -28,6 +29,7 @@ function App() {
   const route = useHashRoute();
   const [selectedPackage, setSelectedPackage] = useState<PackageId | null>(null);
   const [authed, setAuthed] = useState<boolean | null>(null);
+  useReveal([route]);
 
   useEffect(() => {
     if (!route.startsWith('/admin')) return;
@@ -71,10 +73,10 @@ function App() {
       <a href="#hauptinhalt" className="skip-link">Zum Inhalt springen</a>
       <Navbar />
       <main id="hauptinhalt">
-        <Hero />
+        <Hero onSelectPackage={setSelectedPackage} />
         <Services />
         <Packages selectedPackage={selectedPackage} onSelectPackage={setSelectedPackage} />
-        <Gallery />
+        <Process />
         <About />
         <Contact selectedPackage={selectedPackage} onSelectPackage={setSelectedPackage} />
       </main>

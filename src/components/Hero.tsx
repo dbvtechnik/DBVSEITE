@@ -1,97 +1,147 @@
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+import { moods, packages, type PackageId } from '../data';
 
-export default function Hero() {
+interface Props {
+  onSelectPackage: (id: PackageId) => void;
+}
+
+// Drei Scheinwerfer an der Traverse, wie im Logo: links, Mitte, rechts
+const beams = [
+  { left: '18%', tilt: '14deg', sway: '-5deg', delay: '0s' },
+  { left: '50%', tilt: '0deg', sway: '4deg', delay: '-3s' },
+  { left: '82%', tilt: '-14deg', sway: '5deg', delay: '-6s' },
+];
+
+function Truss() {
+  // Traverse als Fachwerk: zwei Gurte, Diagonalen dazwischen, drei Scheinwerfer darunter
+  const segments = 16;
+  const w = 640;
+  const step = w / segments;
+  const diagonals = Array.from({ length: segments }, (_, i) => {
+    const x = i * step;
+    return i % 2 === 0 ? `M${x} 6 L${x + step} 22` : `M${x} 22 L${x + step} 6`;
+  }).join(' ');
   return (
-    <section id="top" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
-      {/* Spotlight beam motif — mirrors the logo's truss + spotlights */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        {/* Truss bar */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[420px] h-px bg-white/15" />
-        <div className="absolute top-1 left-1/2 -translate-x-1/2 w-[420px] h-px bg-white/5" />
-        {/* Three spotlight cones */}
-        {[
-          { x: 'calc(50% - 110px)', delay: '0s' },
-          { x: 'calc(50%)', delay: '0.7s' },
-          { x: 'calc(50% + 110px)', delay: '1.4s' },
-        ].map(({ x, delay }, i) => (
-          <div
-            key={i}
-            className="absolute top-0 w-32 h-[55vh] opacity-30 animate-pulse-slow"
-            style={{
-              left: x,
-              transform: 'translateX(-50%)',
-              animationDelay: delay,
-              background: 'linear-gradient(to bottom, rgba(255,255,255,0.15), transparent)',
-              clipPath: 'polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%)',
-            }}
-          />
-        ))}
-      </div>
+    <svg viewBox="0 0 640 60" className="w-full h-auto" aria-hidden="true">
+      <g stroke="rgba(243,238,230,0.55)" strokeWidth="1.5" fill="none">
+        <path d="M0 6 H640 M0 22 H640" />
+        <path d={diagonals} strokeWidth="1" />
+      </g>
+      {[0.18, 0.5, 0.82].map((x) => (
+        <g key={x} transform={`translate(${x * w} 22)`}>
+          <rect x="-3" y="0" width="6" height="8" fill="rgba(243,238,230,0.55)" />
+          <rect x="-11" y="8" width="22" height="24" rx="3" fill="#1a1a1a" stroke="rgba(243,238,230,0.5)" />
+          <ellipse cx="0" cy="33" rx="8" ry="2.5" fill="var(--beam)" />
+        </g>
+      ))}
+    </svg>
+  );
+}
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 pt-24">
-        {/* Logo — large, centered, blends with black bg */}
-        <img
-          src="/image.png"
-          alt="DBV Veranstaltungstechnik"
-          className="h-52 sm:h-64 w-auto [mix-blend-mode:screen] animate-fade-in"
-        />
+export default function Hero({ onSelectPackage }: Props) {
+  const [moodId, setMoodId] = useState(moods[0].id);
+  const mood = moods.find((m) => m.id === moodId) ?? moods[0];
+  const recommended = packages.find((p) => p.id === mood.packageId);
 
-        {/* Divider */}
-        <div className="mt-12 mb-12 w-12 h-px bg-white/30" />
-
-        {/* Headline */}
-        <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] animate-fade-up">
-          Licht. Ton. DJ.
-        </h1>
-        <p className="mt-4 text-xl sm:text-2xl font-light text-white/50 tracking-wide animate-fade-up" style={{ animationDelay: '0.1s', opacity: 0 }}>
-          Ihr Event. Perfekt inszeniert.
-        </p>
-
-        {/* Sub text */}
-        <p className="mt-6 max-w-lg text-base text-white/40 leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s', opacity: 0 }}>
-          DJ & Veranstaltungstechnik aus Filderstadt – für Hochzeiten, Geburtstage
-          und Firmenfeiern in Stuttgart und Umgebung.
-        </p>
-
-        {/* CTAs */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: '0.3s', opacity: 0 }}>
-          <a
-            href="#kontakt"
-            className="group inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent"
-          >
-            Jetzt anfragen
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-          </a>
-          <a
-            href="#pakete"
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white/80 hover:border-white/50 hover:text-white transition-all"
-          >
-            Pakete ansehen
-          </a>
-        </div>
-
-        {/* Stats */}
-        <div className="mt-16 sm:mt-20 grid grid-cols-3 gap-4 sm:gap-12 sm:flex sm:items-center sm:gap-16 text-center animate-fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
-          {[
-            { value: '20+', label: 'Events' },
-            { value: '2.000+', label: 'Gäste begeistert' },
-            { value: '100%', label: 'Zufriedenheit' },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <div className="font-display text-2xl sm:text-3xl font-bold text-white">{stat.value}</div>
-              <div className="mt-1.5 text-[10px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white/40">{stat.label}</div>
-            </div>
+  return (
+    <section
+      id="top"
+      className="relative isolate min-h-[100svh] overflow-hidden bg-ink-950 [transition:--beam_700ms_ease]"
+      style={{ ['--beam' as string]: mood.beam }}
+    >
+      {/* Bühne: Traverse, Lichtkegel, Lichtpfütze am Boden */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-full" aria-hidden="true">
+        <div className="absolute left-1/2 top-20 w-[min(640px,92vw)] -translate-x-1/2">
+          <Truss />
+          {beams.map((b) => (
+            <div
+              key={b.left}
+              className="absolute top-[30px] h-[88svh] w-[min(420px,60vw)] origin-top animate-beam-sway mix-blend-screen"
+              style={{
+                left: b.left,
+                ['--tilt' as string]: b.tilt,
+                ['--sway' as string]: b.sway,
+                animationDelay: b.delay,
+                clipPath: 'polygon(47% 0, 53% 0, 100% 100%, 0 100%)',
+                background:
+                  'linear-gradient(to bottom, color-mix(in srgb, var(--beam) 42%, transparent), color-mix(in srgb, var(--beam) 6%, transparent) 75%, transparent)',
+              }}
+            />
           ))}
         </div>
+        <div
+          className="absolute bottom-[-12svh] left-1/2 h-[40svh] w-[110vw] -translate-x-1/2 rounded-[50%] opacity-60"
+          style={{ background: 'radial-gradient(closest-side, color-mix(in srgb, var(--beam) 28%, transparent), transparent)' }}
+        />
       </div>
 
-      {/* Bottom fade to site bg */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#040404] to-transparent" aria-hidden="true" />
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col items-center justify-center px-6 pb-16 pt-44 text-center sm:pt-48">
+        <h1 className="font-display font-bold leading-[0.88] tracking-[-0.045em] text-paper text-[clamp(3.6rem,13vw,10rem)] animate-fade-up">
+          Licht. Ton. DJ.
+        </h1>
+        <p
+          className="mt-7 max-w-xl text-lg leading-relaxed text-white/75 sm:text-xl opacity-0 animate-fade-up"
+          style={{ animationDelay: '120ms' }}
+        >
+          DJ und Veranstaltungstechnik aus Filderstadt für Hochzeiten, Geburtstage und Firmenfeiern in Stuttgart und
+          Umgebung.
+        </p>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-slow" aria-hidden="true">
-        <ChevronDown className="h-5 w-5 text-white/30" />
+        {/* Lichtschalter: Anlass wählen, Scheinwerfer und Empfehlung wechseln */}
+        <div className="mt-10 w-full max-w-xl opacity-0 animate-fade-up" style={{ animationDelay: '220ms' }}>
+          <p id="mood-label" className="text-sm text-white/65">
+            Stellen Sie das Licht auf Ihren Anlass ein:
+          </p>
+          <div role="group" aria-labelledby="mood-label" className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {moods.map((m) => {
+              const active = m.id === moodId;
+              return (
+                <button
+                  key={m.id}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => setMoodId(m.id)}
+                  className={`group flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-[15px] font-medium transition-[background-color,color,transform] duration-200 active:scale-[0.97] ${
+                    active ? 'bg-paper text-ink-950' : 'bg-white/[0.07] text-white/80 hover:bg-white/[0.12] hover:text-white'
+                  }`}
+                >
+                  <span
+                    className="h-2 w-2 rounded-full transition-opacity duration-200"
+                    style={{ background: m.beam, opacity: active ? 1 : 0.6 }}
+                    aria-hidden="true"
+                  />
+                  {m.label}
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-5 min-h-[3.25rem] text-base leading-relaxed text-white/85" aria-live="polite">
+            {mood.line}
+          </p>
+        </div>
+
+        <div
+          className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:gap-5 opacity-0 animate-fade-up"
+          style={{ animationDelay: '320ms' }}
+        >
+          {recommended && (
+            <button
+              type="button"
+              onClick={() => onSelectPackage(recommended.id)}
+              className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-ink-950 transition-[background-color,transform] duration-200 hover:bg-accent-400 active:scale-[0.97]"
+            >
+              Mit „{recommended.name}“ anfragen
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+            </button>
+          )}
+          <a
+            href="#pakete"
+            className="rounded-full px-5 py-3 text-base font-medium text-white/80 underline decoration-white/30 hover:text-white hover:decoration-accent transition-colors"
+          >
+            Alle Pakete ansehen
+          </a>
+        </div>
       </div>
     </section>
   );

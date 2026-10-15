@@ -6,8 +6,17 @@ export type PackageId =
   | 'dj-licht'
   | 'dj';
 
+export type Channel = 'licht' | 'ton' | 'dj';
+
+export const channelLabels: Record<Channel, string> = {
+  licht: 'Licht',
+  ton: 'Ton',
+  dj: 'DJ',
+};
+
 export interface PackageInfo {
   id: PackageId;
+  channels: Channel[];
   name: string;
   tagline: string;
   description: string;
@@ -20,6 +29,7 @@ export interface PackageInfo {
 export const packages: PackageInfo[] = [
   {
     id: 'gesamt',
+    channels: ['licht', 'ton', 'dj'],
     name: 'Gesamtpaket',
     tagline: 'Das komplette Erlebnis',
     description:
@@ -38,6 +48,7 @@ export const packages: PackageInfo[] = [
   },
   {
     id: 'dj-licht-ton',
+    channels: ['licht', 'ton', 'dj'],
     name: 'DJ + Licht + Ton',
     tagline: 'Alles außer Bühne',
     description:
@@ -53,6 +64,7 @@ export const packages: PackageInfo[] = [
   },
   {
     id: 'licht-ton',
+    channels: ['licht', 'ton'],
     name: 'Licht & Ton Paket',
     tagline: 'Technik ohne DJ',
     description:
@@ -68,6 +80,7 @@ export const packages: PackageInfo[] = [
   },
   {
     id: 'licht',
+    channels: ['licht'],
     name: 'Nur Licht',
     tagline: 'Atmosphäre pur',
     description:
@@ -83,6 +96,7 @@ export const packages: PackageInfo[] = [
   },
   {
     id: 'dj-licht',
+    channels: ['licht', 'dj'],
     name: 'DJ & Licht Paket',
     tagline: 'Stimmung und Beats',
     description:
@@ -97,6 +111,7 @@ export const packages: PackageInfo[] = [
   },
   {
     id: 'dj',
+    channels: ['dj'],
     name: 'Nur DJ',
     tagline: 'Musik macht die Nacht',
     description:
@@ -111,45 +126,42 @@ export const packages: PackageInfo[] = [
   },
 ];
 
-export const galleryImages = [
+export interface Mood {
+  id: string;
+  label: string;
+  beam: string;
+  line: string;
+  packageId: PackageId;
+}
+
+/** Anlässe für den Licht-Schalter im Hero: Farbe der Scheinwerfer + passende Paket-Empfehlung. */
+export const moods: Mood[] = [
   {
-    url: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    title: 'Konzertbeleuchtung',
-    category: 'Lichttechnik',
+    id: 'hochzeit',
+    label: 'Hochzeit',
+    beam: '#ffd9a3',
+    line: 'Warmes, weiches Licht für den ersten Tanz. Danach Party bis zum letzten Song.',
+    packageId: 'dj-licht-ton',
   },
   {
-    url: 'https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    title: 'DJ am Deck',
-    category: 'DJ Service',
+    id: 'geburtstag',
+    label: 'Geburtstag',
+    beam: '#ff5ca8',
+    line: 'Bunte Scheinwerfer, Nebel und eine Playlist, die jede Generation auf die Tanzfläche holt.',
+    packageId: 'dj-licht',
   },
   {
-    url: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    title: 'Bühnentechnik',
-    category: 'Tontechnik',
+    id: 'firmenfeier',
+    label: 'Firmenfeier',
+    beam: '#8fc7ff',
+    line: 'Klarer Ton für Reden, dezentes Licht zum Essen und später Stimmung für alle.',
+    packageId: 'dj-licht-ton',
   },
   {
-    url: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    title: 'Club-Atmosphäre',
-    category: 'Lichttechnik',
-  },
-  {
-    url: 'https://images.pexels.com/photos/1763067/pexels-photo-1763067.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    title: 'Moving Heads',
-    category: 'Lichttechnik',
-  },
-  {
-    url: 'https://images.pexels.com/photos/1644888/pexels-photo-1644888.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    title: 'Hochzeits-Setup',
-    category: 'Eventtechnik',
-  },
-  {
-    url: 'https://images.pexels.com/photos/3756766/pexels-photo-3756766.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    title: 'Festival-Stimmung',
-    category: 'DJ Service',
-  },
-  {
-    url: 'https://images.pexels.com/photos/1540404/pexels-photo-1540404.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    title: 'Mischpult',
-    category: 'Tontechnik',
+    id: 'party',
+    label: 'Party',
+    beam: '#5cffc8',
+    line: 'Traverse, Moving Heads, Nebel und ein DJ, der die Stimmung liest.',
+    packageId: 'gesamt',
   },
 ];

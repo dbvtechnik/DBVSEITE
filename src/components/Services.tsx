@@ -1,102 +1,75 @@
-import { Lightbulb, Volume2, Music, Settings, Truck, ShieldCheck } from 'lucide-react';
-
 const services = [
   {
-    num: '01',
-    icon: Lightbulb,
     title: 'Lichttechnik',
     description:
-      'Stimmungsvolles Licht für Ihre Feier – von sanft und elegant bis ausgelassen und farbenfroh. Wir bringen die richtige Atmosphäre in jeden Raum.',
+      'Stimmungsvolles Licht für Ihre Feier, von sanft und elegant bis ausgelassen und farbenfroh. Wir bringen die richtige Atmosphäre in jeden Raum.',
     tags: ['Stimmungslicht', 'Strahler', 'Traversen', 'Effekte'],
   },
   {
-    num: '02',
-    icon: Volume2,
     title: 'Tontechnik',
     description:
-      'Kraftvolle Beschallung für jede Raumgröße. Kristallklarer Sound für Reden, Hintergrundmusik oder Tanzfläche – angepasst an Ihre Gästezahl.',
+      'Kraftvolle Beschallung für jede Raumgröße. Klarer Sound für Reden, Hintergrundmusik oder Tanzfläche, passend zu Ihrer Gästezahl.',
     tags: ['Beschallung', 'Mischpult', 'Mikrofone', 'Monitorboxen'],
   },
   {
-    num: '03',
-    icon: Music,
-    title: 'DJ Service',
+    title: 'DJ-Service',
     description:
-      'Erfahrene DJs für jede Veranstaltung. Wunschtitel im Vorfeld willkommen, die passende Anlage ist inklusive.',
+      'DJs, die Ihr Publikum lesen. Wunschtitel sind im Vorfeld willkommen, die passende Anlage bringen wir mit.',
     tags: ['Wunschliste', 'Eigene Anlage', 'Full-Service'],
   },
   {
-    num: '04',
-    icon: Settings,
-    title: 'Eventplanung',
+    title: 'Planung',
     description:
-      'Persönliche Beratung und technische Vorabstimmung. Wir planen Ablauf, Timing und Technik im Detail mit Ihnen – inkl. Vor-Ort-Besichtigung.',
-    tags: ['Beratung', 'Ablaufplan', 'Vorabstimmung', 'Besichtigung'],
+      'Persönliche Beratung und technische Vorabstimmung. Wir planen Ablauf, Timing und Technik im Detail mit Ihnen, auf Wunsch mit Besichtigung vor Ort.',
+    tags: ['Beratung', 'Ablaufplan', 'Besichtigung'],
   },
   {
-    num: '05',
-    icon: Truck,
-    title: 'Logistik & Aufbau',
+    title: 'Auf- und Abbau',
     description:
-      'Lieferung, Auf- und Abbau inklusive. Wir kümmern uns um alles Technische, damit Sie sich um Ihre Gäste kümmern können.',
-    tags: ['Anlieferung', 'Aufbau', 'Abbau', '24h-Service'],
+      'Lieferung, Auf- und Abbau sind inklusive. Wir kümmern uns um alles Technische, damit Sie sich um Ihre Gäste kümmern können.',
+    tags: ['Anlieferung', 'Aufbau', 'Abbau'],
   },
   {
-    num: '06',
-    icon: ShieldCheck,
-    title: 'Zuverlässigkeit',
+    title: 'Backup',
     description:
-      'Pünktlich, professionell und mit Backup-Equipment. Ihr Event ist in sicheren Händen – von der ersten Minute bis zur letzten Platte.',
-    tags: ['Backup-Gear', 'Versichert', 'Pünktlich', 'Erfahren'],
+      'Pünktlich, vorbereitet und mit Ersatz-Equipment im Wagen. Ihr Event läuft, von der ersten Minute bis zur letzten Platte.',
+    tags: ['Ersatztechnik', 'Pünktlich', 'Versichert'],
   },
 ];
 
 export default function Services() {
   return (
-    <section id="leistungen" className="relative py-28 border-t border-white/[0.06]">
+    <section id="leistungen" className="relative bg-ink-950 py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="max-w-2xl mb-16">
-          <span className="section-label">Veranstaltungstechnik</span>
-          <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold leading-tight">
-            Technik, die Ihr Event
-            <br />
-            <span className="text-gradient">zum Erlebnis macht.</span>
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+          <h2
+            data-reveal
+            className="font-display text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.95] tracking-[-0.035em] text-paper lg:col-span-7 text-balance"
+          >
+            Alles, was Ihre Feier hell und laut macht.
           </h2>
-          <p className="mt-5 text-white/50 text-lg leading-relaxed">
-            Von der ersten Skizze bis zum letzten Akkord: Licht, Ton, DJ und Logistik
-            aus einer Hand – perfekt aufeinander abgestimmt.
+          <p data-reveal className="max-w-md text-lg leading-relaxed text-white/70 lg:col-span-5" style={{ ['--reveal-delay' as string]: '80ms' }}>
+            Licht, Ton, DJ und Logistik aus einer Hand, aufeinander abgestimmt von der ersten Idee bis zum letzten Song.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group relative card card-hover p-8"
-            >
-              <div className="flex items-start justify-between mb-6">
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors duration-300">
-                  <service.icon className="h-6 w-6 text-white/70 group-hover:text-white transition-colors duration-300" aria-hidden="true" />
-                </div>
-                <span className="font-display text-sm font-bold text-white/20 tracking-widest">
-                  {service.num}
-                </span>
+        <ul className="group/list mt-16 sm:mt-20">
+          {services.map((service, i) => (
+            <li key={service.title} data-reveal style={{ ['--reveal-delay' as string]: `${i * 60}ms` }}>
+              <div className="group relative grid gap-3 rounded-2xl px-4 py-7 transition-[background-color,opacity] duration-300 hover:bg-white/[0.04] sm:px-6 md:grid-cols-12 md:items-baseline md:gap-8 md:py-9 md:group-hover/list:opacity-50 md:hover:!opacity-100">
+              <h3 className="flex items-center gap-4 font-display text-[clamp(1.75rem,3.4vw,2.75rem)] font-semibold leading-none tracking-[-0.03em] text-paper md:col-span-4">
+                <span
+                  className="h-3 w-3 flex-shrink-0 rounded-full bg-white/15 transition-[background-color,box-shadow] duration-300 group-hover:bg-accent group-hover:shadow-[0_0_18px_4px_rgba(255,181,71,0.45)]"
+                  aria-hidden="true"
+                />
+                {service.title}
+              </h3>
+              <p className="text-base leading-relaxed text-white/75 md:col-span-5">{service.description}</p>
+              <p className="text-[15px] text-white/55 md:col-span-3 md:text-right">{service.tags.join(' · ')}</p>
               </div>
-              <h3 className="font-display text-xl font-semibold mb-3">{service.title}</h3>
-              <p className="text-white/50 leading-relaxed text-sm">{service.description}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {service.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-white/[0.04] px-2.5 py-1 text-[11px] text-white/50 group-hover:text-white/70 transition-colors"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
