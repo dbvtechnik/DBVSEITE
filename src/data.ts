@@ -42,7 +42,7 @@ export const packages: PackageInfo[] = [
       'Nebel- und Effektmaschinen',
       'Persönliche Vorabstimmung & Eventplanung',
     ],
-    badge: 'Bestseller',
+    badge: 'Empfehlung',
     highlighted: true,
     icon: 'Sparkles',
   },

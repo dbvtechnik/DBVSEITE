@@ -61,7 +61,7 @@ export default function Impressum() {
                   <Phone className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-xs text-white/40">Telefon</p>
+                  <p className="text-xs text-white/60">Telefon</p>
                   <p className="text-sm font-medium text-white">{PHONE}</p>
                 </div>
               </a>
@@ -70,7 +70,7 @@ export default function Impressum() {
                   <Mail className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-xs text-white/40">E-Mail</p>
+                  <p className="text-xs text-white/60">E-Mail</p>
                   <p className="text-sm font-medium text-white">{CONTACT_EMAIL}</p>
                 </div>
               </a>
@@ -79,7 +79,7 @@ export default function Impressum() {
                   <MapPin className="h-5 w-5 text-white/70" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-xs text-white/40">Anschrift</p>
+                  <p className="text-xs text-white/60">Anschrift</p>
                   <p className="text-sm font-medium text-white">{business.street}, {business.zip} {business.city}</p>
                 </div>
               </div>
@@ -193,8 +193,8 @@ export default function Impressum() {
                   Inhalten benötigen, die nicht barrierefrei zugänglich sind, erreichen Sie uns unter:
                 </p>
                 <div className="rounded-xl bg-white/[0.03] border border-white/[0.08] px-4 py-3 space-y-1">
-                  <p className="text-sm text-white/70"><span className="text-white/40">E-Mail:</span> {CONTACT_EMAIL}</p>
-                  <p className="text-sm text-white/70"><span className="text-white/40">Telefon:</span> {PHONE}</p>
+                  <p className="text-sm text-white/70"><span className="text-white/60">E-Mail:</span> {CONTACT_EMAIL}</p>
+                  <p className="text-sm text-white/70"><span className="text-white/60">Telefon:</span> {PHONE}</p>
                 </div>
               </div>
             </div>

@@ -190,7 +190,7 @@ export default function Datenschutz() {
             </p>
           </Section>
 
-          <p className="text-xs text-white/40">Stand: {PRIVACY_UPDATED}</p>
+          <p className="text-xs text-white/60">Stand: {PRIVACY_UPDATED}</p>
         </div>
       </main>
     </div>

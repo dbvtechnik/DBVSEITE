@@ -33,6 +33,8 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
     guest_count: '',
     message: '',
   });
+  // Unsichtbares Feld: echte Besucher lassen es leer, Spam-Bots füllen es aus
+  const [website, setWebsite] = useState('');
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -51,6 +53,10 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (website) {
+      setStatus('success');
+      return;
+    }
     if (!selectedPackage) {
       setStatus('error');
       setErrorMsg('Bitte wählen Sie ein Paket aus.');
@@ -107,10 +113,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
     } catch (err) {
       console.error('[Contact] Submit error:', err);
       setStatus('error');
-      const msg = err && typeof err === 'object' && 'message' in err
-        ? String((err as { message: unknown }).message)
-        : 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.';
-      setErrorMsg(msg);
+      setErrorMsg('Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder schreiben Sie uns direkt per E-Mail.');
     } finally {
       setSubmitting(false);
     }
@@ -227,6 +230,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     type="text"
                     required
                     value={form.name}
+                    maxLength={100}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                     placeholder="Max Mustermann"
@@ -239,6 +243,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     type="email"
                     required
                     value={form.email}
+                    maxLength={200}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                     placeholder="max@example.de"
@@ -250,6 +255,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     id="contact-phone"
                     type="tel"
                     value={form.phone}
+                    maxLength={40}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                     placeholder="+49 1512 1931491"
@@ -291,6 +297,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     id="contact-guests"
                     type="number"
                     min="1"
+                    max="5000"
                     value={form.guest_count}
                     onChange={(e) => setForm({ ...form, guest_count: e.target.value })}
                     className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
@@ -305,6 +312,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   id="contact-location"
                   type="text"
                   value={form.event_location}
+                  maxLength={200}
                   onChange={(e) => setForm({ ...form, event_location: e.target.value })}
                   className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                   placeholder="z.B. Stuttgart, Eventhalle"
@@ -317,6 +325,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   id="contact-message"
                   rows={4}
                   value={form.message}
+                  maxLength={3000}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="w-full resize-none rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                   placeholder="Erzählen Sie uns von Ihrem Event – Anlass, Gästeanzahl, Wünsche..."
@@ -336,6 +345,18 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   <span>Ihre Anfrage wurde übermittelt. Wir melden uns schnellstmöglich bei Ihnen.</span>
                 </div>
               )}
+
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="contact-website">Website</label>
+                <input
+                  id="contact-website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                />
+              </div>
 
               <button
                 type="submit"
