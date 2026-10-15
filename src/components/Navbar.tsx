@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 const navLinks = [
   { label: 'Leistungen', href: '#leistungen' },
   { label: 'Pakete', href: '#pakete' },
-  { label: 'Galerie', href: '#galerie' },
+  { label: 'Ablauf', href: '#ablauf' },
   { label: 'Über uns', href: '#ueber' },
   { label: 'Kontakt', href: '#kontakt' },
 ];
@@ -37,15 +37,15 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-[#040404]/95 backdrop-blur-sm py-3 border-b border-white/[0.06]' : 'py-5 bg-transparent'
+        scrolled ? 'bg-ink-950/95 py-3' : 'py-5 bg-transparent'
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6" aria-label="Hauptnavigation">
         <a href="#top" className="flex items-center group" aria-label="DBV Veranstaltungstechnik – Startseite">
           <img
-            src="/image.png"
+            src="/logo.png"
             alt="DBV Veranstaltungstechnik"
-            className="h-14 w-auto transition-transform duration-300 group-hover:scale-105 [mix-blend-mode:screen]"
+            className="h-11 w-auto transition-transform duration-300 group-hover:scale-105"
           />
         </a>
 
@@ -54,7 +54,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-white/60 hover:text-white transition-colors relative group"
+              className="text-[15px] font-medium text-white/75 hover:text-white transition-colors relative group"
             >
               {link.label}
               <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-accent group-hover:w-full transition-all duration-300" />
@@ -62,7 +62,7 @@ export default function Navbar() {
           ))}
           <a
             href="#kontakt"
-            className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white hover:bg-accent-600 transition-colors"
+            className="rounded-full bg-accent px-5 py-2 text-[15px] font-semibold text-ink-950 hover:bg-accent-400 transition-[background-color,transform] duration-200 active:scale-[0.97]"
           >
             Anfragen
           </a>
@@ -70,7 +70,7 @@ export default function Navbar() {
 
         <button
           ref={menuButtonRef}
-          className="text-white/80 md:hidden"
+          className="-mr-2 p-2 text-white/80 md:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Menü"
           aria-expanded={open}
@@ -84,7 +84,7 @@ export default function Navbar() {
         <div
           ref={mobileMenuRef}
           id="mobile-menu"
-          className="md:hidden bg-[#040404]/98 backdrop-blur-sm mt-3 mx-4 rounded-lg p-6 animate-fade-in border border-white/[0.08]"
+          className="md:hidden bg-ink-850 mt-3 mx-4 rounded-2xl p-6 animate-fade-in"
         >
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
@@ -100,7 +100,7 @@ export default function Navbar() {
             <a
               href="#kontakt"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-accent px-5 py-2.5 text-center text-sm font-semibold text-white"
+              className="mt-2 rounded-full bg-accent px-5 py-3 text-center text-base font-semibold text-ink-950"
             >
               Anfragen
             </a>

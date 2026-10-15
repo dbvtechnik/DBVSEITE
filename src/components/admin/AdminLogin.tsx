@@ -107,7 +107,7 @@ export default function AdminLogin({ onSuccess, onBack }: Props) {
             <button
               type="submit"
               disabled={loading}
-              className="group flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent disabled:opacity-60 disabled:cursor-not-allowed"
+              className="group flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-ink-950 hover:bg-accent-600 transition-all glow-accent disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <>

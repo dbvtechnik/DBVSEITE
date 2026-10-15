@@ -117,16 +117,14 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
   };
 
   return (
-    <section id="kontakt" className="relative py-28 border-t border-white/[0.06]">
+    <section id="kontakt" className="relative bg-ink-950 py-28 sm:py-36">
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="section-label">Kontakt</span>
-          <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold leading-tight">
-            Jetzt
-            <span className="text-gradient"> anfragen</span>
+        <div className="mb-16 max-w-3xl">
+          <h2 data-reveal className="font-display text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.95] tracking-[-0.035em] text-paper text-balance">
+            Erzählen Sie uns von Ihrem Event.
           </h2>
-          <p className="mt-5 text-white/50 text-lg">
-            Erzählen Sie uns von Ihrem Event. Wir melden uns innerhalb von 24 Stunden.
+          <p data-reveal className="mt-6 text-lg text-white/70">
+            Wir melden uns in der Regel innerhalb von 24 Stunden.
           </p>
         </div>
 
@@ -138,10 +136,10 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
               <div className="space-y-5">
                 <a href="tel:+4915121931491" className="flex items-center gap-4 group" aria-label="Telefon: +49 1512 1931491">
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors">
-                    <Phone className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
+                    <Phone className="h-5 w-5 text-white/70 group-hover:text-ink-950 transition-colors" aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/40">Telefon</p>
+                    <p className="text-[13px] text-white/60">Telefon</p>
                     <p className="text-sm font-medium text-white">{PHONE}</p>
                   </div>
                 </a>
@@ -153,19 +151,19 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   aria-label="WhatsApp: +49 1512 1931491"
                 >
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-green-500 transition-colors">
-                    <MessageCircle className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
+                    <MessageCircle className="h-5 w-5 text-white/70 group-hover:text-ink-950 transition-colors" aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/40">WhatsApp</p>
+                    <p className="text-[13px] text-white/60">WhatsApp</p>
                     <p className="text-sm font-medium text-white">Direkt schreiben</p>
                   </div>
                 </a>
                 <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-4 group" aria-label={`E-Mail: ${CONTACT_EMAIL}`}>
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-accent transition-colors">
-                    <Mail className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" aria-hidden="true" />
+                    <Mail className="h-5 w-5 text-white/70 group-hover:text-ink-950 transition-colors" aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/40">E-Mail</p>
+                    <p className="text-[13px] text-white/60">E-Mail</p>
                     <p className="text-sm font-medium text-white">{CONTACT_EMAIL}</p>
                   </div>
                 </a>
@@ -174,7 +172,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     <MapPin className="h-5 w-5 text-white/70" aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/40">Einsatzgebiet</p>
+                    <p className="text-[13px] text-white/60">Einsatzgebiet</p>
                     <p className="text-sm font-medium text-white">Filderstadt & Stuttgart</p>
                   </div>
                 </div>
@@ -183,7 +181,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
 
             <div className="card p-8">
               <h3 className="font-display text-lg font-semibold mb-3">Antwortzeiten</h3>
-              <p className="text-sm text-white/50 leading-relaxed">
+              <p className="text-[15px] text-white/70 leading-relaxed">
                 Anfragen werden in der Regel innerhalb von 24 Stunden beantwortet.
                 Für kurzfristige Anfragen erreichen Sie uns am schnellsten telefonisch
                 oder per WhatsApp.
@@ -214,7 +212,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                 ) : (
                   <a
                     href="#pakete"
-                    className="block rounded-xl border border-dashed border-white/15 px-4 py-3 text-sm text-white/40 hover:border-accent hover:text-accent transition-colors text-center"
+                    className="block rounded-xl border border-dashed border-white/15 px-4 py-3 text-sm text-white/60 hover:border-accent hover:text-accent transition-colors text-center"
                   >
                     Bitte wählen Sie ein Paket aus
                   </a>
@@ -230,7 +228,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                     placeholder="Max Mustermann"
                   />
                 </div>
@@ -242,7 +240,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                     placeholder="max@example.de"
                   />
                 </div>
@@ -253,7 +251,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                     placeholder="+49 1512 1931491"
                   />
                 </div>
@@ -267,7 +265,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     type="date"
                     value={form.event_date}
                     onChange={(e) => setForm({ ...form, event_date: e.target.value })}
-                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark]"
+                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark]"
                   />
                 </div>
                 <div>
@@ -295,7 +293,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                     min="1"
                     value={form.guest_count}
                     onChange={(e) => setForm({ ...form, guest_count: e.target.value })}
-                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                    className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                     placeholder="z.B. 80"
                   />
                 </div>
@@ -308,7 +306,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   type="text"
                   value={form.event_location}
                   onChange={(e) => setForm({ ...form, event_location: e.target.value })}
-                  className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                  className="w-full rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                   placeholder="z.B. Stuttgart, Eventhalle"
                 />
               </div>
@@ -320,7 +318,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
                   rows={4}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full resize-none rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+                  className="w-full resize-none rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder-white/45 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
                   placeholder="Erzählen Sie uns von Ihrem Event – Anlass, Gästeanzahl, Wünsche..."
                 />
               </div>
@@ -342,7 +340,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
               <button
                 type="submit"
                 disabled={submitting}
-                className="group flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white hover:bg-accent-600 transition-all glow-accent disabled:opacity-60 disabled:cursor-not-allowed"
+                className="group flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-4 text-base font-semibold text-ink-950 hover:bg-accent-400 transition-[background-color,transform] duration-200 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {submitting ? (
                   <>

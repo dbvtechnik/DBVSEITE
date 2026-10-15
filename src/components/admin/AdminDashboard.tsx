@@ -214,7 +214,7 @@ export default function AdminDashboard({ onLogout, onBack }: Props) {
                 onClick={() => setFilter(f)}
                 className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all ${
                   filter === f
-                    ? 'bg-accent text-white'
+                    ? 'bg-accent text-ink-950'
                     : 'bg-white/[0.04] border border-white/[0.08] text-white/60 hover:text-white hover:border-white/20'
                 }`}
               >
