@@ -13,7 +13,7 @@ const services = [
     icon: Speaker,
     description:
       'Klarer Sound für Reden, Hintergrundmusik und Tanzfläche. Wir stimmen die Anlage auf Ihre Gästezahl ab.',
-    items: ['Beschallung bis ca. 200 Gäste', 'Mischpult', 'Kabellose Mikrofone', 'Monitorboxen'],
+    items: ['Beschallung für kleine und große Feiern', 'Mischpult', 'Kabellose Mikrofone', 'Monitorboxen'],
   },
   {
     title: 'DJ',
