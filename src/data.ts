@@ -1,6 +1,5 @@
 export type PackageId =
   | 'gesamt'
-  | 'dj-licht-ton'
   | 'licht-ton'
   | 'licht'
   | 'dj-licht'
@@ -47,21 +46,6 @@ export const packages: PackageInfo[] = [
     icon: 'Sparkles',
   },
   {
-    id: 'dj-licht-ton',
-    channels: ['licht', 'ton', 'dj'],
-    name: 'DJ + Licht + Ton',
-    tagline: 'Alles außer Bühne',
-    description:
-      'DJ-Service kombiniert mit professioneller Licht- und Tontechnik. Perfekt für Hochzeiten, Firmenfeiern und Geburtstage.',
-    features: [
-      'Erfahrener DJ mit umfangreicher Musikbibliothek',
-      'Stimmungsvolle Lichtanlage',
-      'Tontechnik passend zu Ihrer Gästezahl',
-      'Kabelloses Mikrofon',
-    ],
-    icon: 'Music',
-  },
-  {
     id: 'licht-ton',
     channels: ['licht', 'ton'],
     name: 'Licht & Ton Paket',
@@ -71,7 +55,7 @@ export const packages: PackageInfo[] = [
     features: [
       'Lichtanlage mit programmierbaren Szenen',
       'Tontechnik passend zu Ihrer Gästezahl',
-      'Mischpult & Bühnenmonitore',
+      'Mischpult & Monitorboxen',
       'Techniker vor Ort',
     ],
     icon: 'Lightbulb',
