@@ -37,7 +37,7 @@ export const packages: PackageInfo[] = [
     features: [
       'Erfahrener DJ mit umfangreicher Musikbibliothek',
       'Lichtanlage mit Moving Heads & Effekten',
-      'Tontechnik für bis zu 200 Gäste',
+      'Tontechnik passend zu Ihrer Gästezahl',
       'Traversensystem',
       'Nebel- und Effektmaschinen',
       'Persönliche Vorabstimmung & Eventplanung',
@@ -56,7 +56,7 @@ export const packages: PackageInfo[] = [
     features: [
       'Erfahrener DJ mit umfangreicher Musikbibliothek',
       'Stimmungsvolle Lichtanlage',
-      'Tontechnik für bis zu 200 Gäste',
+      'Tontechnik passend zu Ihrer Gästezahl',
       'Kabelloses Mikrofon',
     ],
     icon: 'Music',
@@ -70,7 +70,7 @@ export const packages: PackageInfo[] = [
       'Hochwertige Licht- und Tontechnik für Ihre Veranstaltung. Ideal, wenn Sie bereits für Musik sorgen oder eine Band einsetzen.',
     features: [
       'Lichtanlage mit programmierbaren Szenen',
-      'Tontechnik für bis zu 200 Gäste',
+      'Tontechnik passend zu Ihrer Gästezahl',
       'Mischpult & Bühnenmonitore',
       'Techniker vor Ort',
     ],
@@ -101,7 +101,7 @@ export const packages: PackageInfo[] = [
     features: [
       'Erfahrener DJ',
       'Lichtanlage für Party-Atmosphäre',
-      'Tontechnik für bis zu 200 Gäste',
+      'Tontechnik passend zu Ihrer Gästezahl',
     ],
     icon: 'Headphones',
   },
@@ -114,7 +114,7 @@ export const packages: PackageInfo[] = [
       'Unser DJ-Service mit eigener kompakter Anlage. Perfekt für kleinere Feiern und private Anlässe.',
     features: [
       'Erfahrener DJ mit großem Repertoire',
-      'Tontechnik für bis zu 200 Gäste',
+      'Tontechnik passend zu Ihrer Gästezahl',
       'Wunschtitel im Vorfeld einreichbar',
       'Persönliche Beratung',
     ],
