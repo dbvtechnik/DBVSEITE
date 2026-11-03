@@ -20,7 +20,7 @@ const services = [
     icon: Headphones,
     description:
       'DJs, die Ihr Publikum lesen. Wunschtitel sind im Vorfeld willkommen, die passende Anlage bringen wir mit.',
-    items: ['Musik für jede Generation', 'Wunschliste vorab', 'Eigene Anlage', 'Full-Service'],
+    items: ['Musik für jede Generation', 'Wunschliste vorab', 'Eigene Anlage'],
   },
 ];
 
@@ -28,10 +28,6 @@ const always = [
   {
     title: 'Planung',
     text: 'Persönliche Beratung und Ablaufplan. Auf Wunsch schauen wir uns die Location vorher an.',
-  },
-  {
-    title: 'Auf- und Abbau',
-    text: 'Lieferung, Aufbau und Abbau sind inklusive. Sie kümmern sich um Ihre Gäste.',
   },
   {
     title: 'Backup',
@@ -73,8 +69,8 @@ export default function Services() {
           </ul>
 
           <div className="border-t border-line bg-[#fbfaf7] p-6 sm:p-8">
-            <h3 className="text-sm font-medium text-muted">Bei jeder Buchung dabei</h3>
-            <dl className="mt-4 grid gap-5 sm:grid-cols-3 sm:gap-8">
+            <h3 className="text-sm font-medium text-muted">Darauf können Sie sich verlassen</h3>
+            <dl className="mt-4 grid gap-5 sm:grid-cols-2 sm:gap-8">
               {always.map((a) => (
                 <div key={a.title}>
                   <dt className="font-semibold">{a.title}</dt>

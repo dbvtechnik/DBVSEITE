@@ -5,7 +5,7 @@ const occasions = ['Hochzeiten', 'Geburtstage', 'Firmenfeiern', 'Vereinsfeste', 
 
 const facts = [
   { title: 'Schnelle Antwort', text: 'meist innerhalb von 24 Stunden' },
-  { title: 'Alles inklusive', text: 'Lieferung, Auf- und Abbau' },
+  { title: 'Aus der Region', text: 'Filderstadt, Stuttgart und Umgebung' },
   { title: 'Mit Backup', text: 'Ersatztechnik immer im Wagen' },
 ];
 
