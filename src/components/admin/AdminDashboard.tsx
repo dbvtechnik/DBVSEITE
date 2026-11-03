@@ -163,11 +163,11 @@ export default function AdminDashboard({ onLogout, onBack }: Props) {
         {/* Team info */}
         <div className="mb-8 flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5">
           <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-accent/15 border border-accent/25">
-            <span className="font-display text-lg font-bold text-accent">3</span>
+            <span className="font-display text-lg font-bold text-accent">4</span>
           </div>
           <div>
             <p className="text-sm font-semibold text-white">DBV Veranstaltungstechnik</p>
-            <p className="text-xs text-white/50 mt-0.5">Drei 16-Jährige mit Leidenschaft und Erfahrung.</p>
+            <p className="text-xs text-white/50 mt-0.5">Vier Jungs aus Filderstadt.</p>
           </div>
         </div>
 

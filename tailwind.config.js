@@ -27,10 +27,16 @@ export default {
           700: '#d97706',
         },
         paper: '#f3eee6',
+        // Öffentliche Seite: hell und schlicht
+        canvas: '#f6f5f1',
+        surface: '#ffffff',
+        fg: '#121211',
+        muted: '#5d5b56',
+        line: '#dedbd3',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+        sans: ['"Geist Variable"', 'system-ui', 'sans-serif'],
+        display: ['"Geist Variable"', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         widest: '0.25em',

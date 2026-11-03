@@ -21,13 +21,13 @@ export default class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-ink-950 flex items-center justify-center px-4">
+        <div className="min-h-screen bg-canvas text-fg flex items-center justify-center px-4">
           <div className="max-w-md text-center">
-            <h1 className="font-display text-2xl font-bold text-white mb-3">Etwas ist schiefgelaufen</h1>
-            <p className="text-white/50 text-sm mb-6">{this.state.message}</p>
+            <h1 className="text-2xl font-bold text-fg mb-3">Etwas ist schiefgelaufen</h1>
+            <p className="text-muted text-sm mb-6">{this.state.message}</p>
             <button
               onClick={() => window.location.reload()}
-              className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-ink-950 hover:bg-accent-400 transition-all"
+              className="rounded-full bg-fg px-6 py-3 text-sm font-semibold text-canvas hover:bg-black transition-all"
             >
               Seite neu laden
             </button>

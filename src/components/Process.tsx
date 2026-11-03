@@ -19,34 +19,25 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="ablauf" className="relative bg-ink-950 py-28 sm:py-36">
-      <div className="mx-auto max-w-7xl px-6">
-        <h2
-          data-reveal
-          className="max-w-3xl font-display text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.95] tracking-[-0.035em] text-paper text-balance"
-        >
-          Von der Anfrage bis zum letzten Song.
+    <section id="ablauf" className="border-t border-line px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="max-w-2xl text-balance text-[clamp(2rem,6.5vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+          So läuft es ab.
         </h2>
 
-        {/* Lauflicht: die Lampen gehen beim Einblenden nacheinander an */}
-        <ol className="mt-16 grid gap-10 sm:mt-20 md:grid-cols-4 md:gap-6">
+        <ol className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:mt-16 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => (
-            <li
-              key={step.title}
-              data-reveal
-              style={{ ['--reveal-delay' as string]: `${i * 140}ms` }}
-              className="group/step relative md:pt-12"
-            >
+            <li key={step.title} className="flex gap-5 bg-canvas p-5 sm:flex-col sm:gap-8 sm:p-6">
               <span
-                className="absolute left-0 top-0 hidden h-1 w-full rounded-full bg-white/10 md:block"
+                className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-fg text-[15px] font-medium tabular-nums"
                 aria-hidden="true"
-              />
-              <span
-                className="step-lamp absolute left-0 top-[-8px] hidden h-5 w-5 rounded-full bg-white/15 md:block"
-                aria-hidden="true"
-              />
-              <h3 className="font-display text-3xl font-semibold tracking-[-0.025em] text-paper">{step.title}</h3>
-              <p className="mt-3 max-w-xs text-base leading-relaxed text-white/75">{step.text}</p>
+              >
+                {i + 1}
+              </span>
+              <div>
+                <h3 className="text-xl font-semibold tracking-[-0.02em]">{step.title}</h3>
+                <p className="mt-2 text-pretty text-[15px] leading-relaxed text-muted">{step.text}</p>
+              </div>
             </li>
           ))}
         </ol>

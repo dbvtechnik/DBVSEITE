@@ -12,7 +12,6 @@ import AdminDashboard from './components/admin/AdminDashboard';
 import Impressum from './components/Impressum';
 import Datenschutz from './components/Datenschutz';
 import { supabase } from './lib/supabase';
-import { useReveal } from './lib/useReveal';
 import type { PackageId } from './data';
 
 function useHashRoute() {
@@ -29,7 +28,11 @@ function App() {
   const route = useHashRoute();
   const [selectedPackage, setSelectedPackage] = useState<PackageId | null>(null);
   const [authed, setAuthed] = useState<boolean | null>(null);
-  useReveal([route]);
+
+  // Unterseiten (Impressum, Datenschutz, Admin) immer oben beginnen
+  useEffect(() => {
+    if (route.startsWith('/')) window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [route]);
 
   useEffect(() => {
     if (!route.startsWith('/admin')) return;
@@ -50,6 +53,10 @@ function App() {
   }
 
   if (route.startsWith('/admin')) {
+    return <div className="text-white">{renderAdmin()}</div>;
+  }
+
+  function renderAdmin() {
     if (authed === null) {
       return (
         <div className="min-h-screen bg-ink-950 flex items-center justify-center">
@@ -69,11 +76,11 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-ink-950">
+    <div className="min-h-screen">
       <a href="#hauptinhalt" className="skip-link">Zum Inhalt springen</a>
       <Navbar />
       <main id="hauptinhalt">
-        <Hero onSelectPackage={setSelectedPackage} />
+        <Hero />
         <Services />
         <Packages selectedPackage={selectedPackage} onSelectPackage={setSelectedPackage} />
         <Process />
