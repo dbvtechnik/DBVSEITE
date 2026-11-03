@@ -5,15 +5,15 @@ import { business, PRIVACY_UPDATED } from '../legal';
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section>
-      <h2 className="font-display text-2xl font-bold text-white mb-4">{title}</h2>
-      <div className="glass-strong p-6 space-y-3 text-sm text-white/60 leading-relaxed">{children}</div>
+      <h2 className="text-2xl font-bold text-fg mb-4">{title}</h2>
+      <div className="rounded-2xl bg-surface p-6 space-y-3 text-sm text-muted leading-relaxed">{children}</div>
     </section>
   );
 }
 
 function ExtLink({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="text-accent underline hover:text-accent-300">
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-fg underline hover:text-fg">
       {children}
     </a>
   );
@@ -21,17 +21,17 @@ function ExtLink({ href, children }: { href: string; children: ReactNode }) {
 
 export default function Datenschutz() {
   return (
-    <div className="min-h-screen bg-ink-950">
-      <header className="sticky top-0 z-30 border-b border-white/[0.08] bg-ink-950/80 backdrop-blur-xl">
+    <div className="min-h-screen bg-canvas text-fg">
+      <header className="sticky top-0 z-30 border-b border-line bg-canvas/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 sm:px-6 py-4">
           <a
             href="#/"
-            className="flex items-center gap-2 rounded-full border border-white/[0.08] px-4 py-2 text-sm text-white/60 hover:text-white hover:border-white/20 transition-all"
+            className="flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm text-muted hover:text-fg hover:border-fg/40 transition-all"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Zurück zur Website</span>
           </a>
-          <h1 className="font-display text-lg font-bold text-white">Datenschutz</h1>
+          <h1 className="text-lg font-bold text-fg">Datenschutz</h1>
         </div>
       </header>
 
@@ -48,7 +48,7 @@ export default function Datenschutz() {
 
           <Section title="1. Verantwortlicher">
             <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
-            <div className="space-y-1 text-white/70">
+            <div className="space-y-1 text-muted">
               <p className="font-medium">{business.name}</p>
               {business.owners.length > 0 && <p>Inhaber: {business.owners.join(', ')}</p>}
               <p>{business.street}</p>
@@ -96,21 +96,21 @@ export default function Datenschutz() {
               Dienstleister.
             </p>
             <p>
-              <span className="text-white/80">Speicherung der Anfragen:</span> Die Anfragen werden in einer Datenbank beim
+              <span className="text-fg">Speicherung der Anfragen:</span> Die Anfragen werden in einer Datenbank beim
               Dienst Supabase gespeichert. Supabase verarbeitet die Daten in unserem Auftrag auf Grundlage eines
               Auftragsverarbeitungsvertrags. Soweit Daten dabei außerhalb der EU verarbeitet werden, erfolgt das auf
               Grundlage der Standardvertragsklauseln der EU-Kommission. Weitere Informationen:{' '}
               <ExtLink href="https://supabase.com/privacy">Datenschutzerklärung von Supabase</ExtLink>.
             </p>
             <p>
-              <span className="text-white/80">Benachrichtigung per E-Mail:</span> Damit wir neue Anfragen schnell sehen,
+              <span className="text-fg">Benachrichtigung per E-Mail:</span> Damit wir neue Anfragen schnell sehen,
               wird der Inhalt Ihrer Anfrage per E-Mail an uns weitergeleitet. Für den Versand nutzen wir den Dienst
               Resend (Plus Five Five, Inc., USA). Dabei können Daten in die USA übertragen werden. Resend ist nach dem
               EU-US Data Privacy Framework zertifiziert und verarbeitet die Daten in unserem Auftrag. Weitere Informationen:{' '}
               <ExtLink href="https://resend.com/legal/privacy-policy">Datenschutzerklärung von Resend</ExtLink>.
             </p>
             <p>
-              <span className="text-white/80">Speicherdauer:</span> Kommt kein Auftrag zustande, löschen wir Ihre
+              <span className="text-fg">Speicherdauer:</span> Kommt kein Auftrag zustande, löschen wir Ihre
               Anfrage spätestens sechs Monate nach der letzten Kommunikation. Wird ein Auftrag erteilt, bewahren wir die
               Daten so lange auf, wie es gesetzliche Aufbewahrungspflichten verlangen (in der Regel sechs bis zehn
               Jahre nach Handels- und Steuerrecht).
@@ -190,7 +190,7 @@ export default function Datenschutz() {
             </p>
           </Section>
 
-          <p className="text-xs text-white/60">Stand: {PRIVACY_UPDATED}</p>
+          <p className="text-xs text-muted">Stand: {PRIVACY_UPDATED}</p>
         </div>
       </main>
     </div>

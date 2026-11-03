@@ -58,7 +58,6 @@ export const packages: PackageInfo[] = [
       'Stimmungsvolle Lichtanlage',
       'Tontechnik für bis zu 200 Gäste',
       'Kabelloses Mikrofon',
-      'Auf- und Abbau inklusive',
     ],
     icon: 'Music',
   },
@@ -74,7 +73,6 @@ export const packages: PackageInfo[] = [
       'Tontechnik für bis zu 200 Gäste',
       'Mischpult & Bühnenmonitore',
       'Techniker vor Ort',
-      'Auf- und Abbau inklusive',
     ],
     icon: 'Lightbulb',
   },
@@ -89,7 +87,6 @@ export const packages: PackageInfo[] = [
       'LED-Par-Strahler & Moving Heads',
       'Lichtsteuerung mit DMX',
       'Nebelmaschine optional',
-      'Auf- und Abbau inklusive',
       'Anpassbar an jede Location',
     ],
     icon: 'Sun',
@@ -105,7 +102,6 @@ export const packages: PackageInfo[] = [
       'Erfahrener DJ',
       'Lichtanlage für Party-Atmosphäre',
       'Tontechnik für bis zu 200 Gäste',
-      'Auf- und Abbau inklusive',
     ],
     icon: 'Headphones',
   },
@@ -126,42 +122,9 @@ export const packages: PackageInfo[] = [
   },
 ];
 
-export interface Mood {
-  id: string;
-  label: string;
-  beam: string;
-  line: string;
-  packageId: PackageId;
-}
+export const WHATSAPP_LINK = `https://wa.me/4915121931491?text=${encodeURIComponent(
+  'Hallo DBV Veranstaltungstechnik, ich habe eine Anfrage für ein Event:',
+)}`;
 
-/** Anlässe für den Licht-Schalter im Hero: Farbe der Scheinwerfer + passende Paket-Empfehlung. */
-export const moods: Mood[] = [
-  {
-    id: 'hochzeit',
-    label: 'Hochzeit',
-    beam: '#ffd9a3',
-    line: 'Warmes, weiches Licht für den ersten Tanz. Danach Party bis zum letzten Song.',
-    packageId: 'dj-licht-ton',
-  },
-  {
-    id: 'geburtstag',
-    label: 'Geburtstag',
-    beam: '#ff5ca8',
-    line: 'Bunte Scheinwerfer, Nebel und eine Playlist, die jede Generation auf die Tanzfläche holt.',
-    packageId: 'dj-licht',
-  },
-  {
-    id: 'firmenfeier',
-    label: 'Firmenfeier',
-    beam: '#8fc7ff',
-    line: 'Klarer Ton für Reden, dezentes Licht zum Essen und später Stimmung für alle.',
-    packageId: 'dj-licht-ton',
-  },
-  {
-    id: 'party',
-    label: 'Party',
-    beam: '#5cffc8',
-    line: 'Traverse, Moving Heads, Nebel und ein DJ, der die Stimmung liest.',
-    packageId: 'gesamt',
-  },
-];
+/** Wert im Formular, wenn noch kein Paket feststeht. */
+export const NO_PACKAGE = 'Noch unsicher, bitte beraten';

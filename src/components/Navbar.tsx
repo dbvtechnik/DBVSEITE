@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
@@ -11,14 +11,19 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  // Über dem schwarzen Einstieg ist die Leiste dunkel, danach hell
+  const [onHero, setOnHero] = useState(true);
   const [open, setOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      const hero = document.getElementById('top');
+      setOnHero(hero ? hero.getBoundingClientRect().bottom > 140 : false);
+    };
     onScroll();
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -31,80 +36,90 @@ export default function Navbar() {
       }
     };
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
   }, [open]);
+
+  const dark = onHero && !open;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-ink-950/95 py-3' : 'py-5 bg-transparent'
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,color] duration-300 ease-out ${
+        dark
+          ? scrolled
+            ? 'border-white/10 bg-black/80 text-white backdrop-blur-md'
+            : 'border-transparent bg-transparent text-white'
+          : 'border-line bg-canvas/90 text-fg backdrop-blur-md'
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6" aria-label="Hauptnavigation">
-        <a href="#top" className="flex items-center group" aria-label="DBV Veranstaltungstechnik – Startseite">
+      <nav className="mx-auto flex h-16 max-w-[76rem] items-center justify-between px-5 sm:px-8" aria-label="Hauptnavigation">
+        <a href="#top" className="-ml-1 flex items-center rounded-md p-1" aria-label="DBV Veranstaltungstechnik, zum Seitenanfang">
           <img
             src="/logo.png"
-            alt="DBV Veranstaltungstechnik"
-            className="h-11 w-auto transition-transform duration-300 group-hover:scale-105"
+            alt=""
+            width={640}
+            height={442}
+            className={`h-9 w-auto transition-[filter,opacity] duration-300 ease-out ${dark ? 'opacity-0' : 'logo-dark opacity-100'}`}
           />
         </a>
 
-        <div className="hidden items-center gap-10 md:flex">
+        <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-[15px] font-medium text-white/75 hover:text-white transition-colors relative group"
+              className={`text-[15px] transition-colors duration-200 ease-out ${dark ? 'text-white/70 hover:text-white' : 'text-muted hover:text-fg'}`}
             >
               {link.label}
-              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-accent group-hover:w-full transition-all duration-300" />
             </a>
           ))}
           <a
             href="#kontakt"
-            className="rounded-full bg-accent px-5 py-2 text-[15px] font-semibold text-ink-950 hover:bg-accent-400 transition-[background-color,transform] duration-200 active:scale-[0.97]"
+            className={`btn min-h-[40px] px-5 ${dark ? 'bg-white text-black hover:bg-white/90' : 'bg-fg text-canvas hover:bg-black'}`}
           >
             Anfragen
           </a>
         </div>
 
-        <button
-          ref={menuButtonRef}
-          className="-mr-2 p-2 text-white/80 md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label="Menü"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href="#kontakt"
+            className={`btn min-h-[40px] px-4 text-sm ${dark ? 'bg-white text-black' : 'bg-fg text-canvas'}`}
+          >
+            Anfragen
+          </a>
+          <button
+            ref={menuButtonRef}
+            type="button"
+            className="flex h-11 w-11 items-center justify-center rounded-full"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? 'Menü schließen' : 'Menü öffnen'}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+          >
+            {open ? <X className="h-6 w-6" strokeWidth={1.75} /> : <Menu className="h-6 w-6" strokeWidth={1.75} />}
+          </button>
+        </div>
       </nav>
 
       {open && (
-        <div
-          ref={mobileMenuRef}
-          id="mobile-menu"
-          className="md:hidden bg-ink-850 mt-3 mx-4 rounded-2xl p-6 animate-fade-in"
-        >
-          <div className="flex flex-col gap-4">
+        <div id="mobile-menu" className="h-[calc(100svh-4rem)] overflow-y-auto border-t border-line bg-canvas px-5 pb-10 md:hidden">
+          <ul className="divide-y divide-line">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="text-base font-medium text-white/70 hover:text-accent transition-colors"
-              >
-                {link.label}
-              </a>
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between py-5 text-2xl font-medium tracking-[-0.02em] text-fg"
+                >
+                  {link.label}
+                </a>
+              </li>
             ))}
-            <a
-              href="#kontakt"
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-accent px-5 py-3 text-center text-base font-semibold text-ink-950"
-            >
-              Anfragen
-            </a>
-          </div>
+          </ul>
         </div>
       )}
     </header>

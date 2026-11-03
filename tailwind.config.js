@@ -27,10 +27,23 @@ export default {
           700: '#d97706',
         },
         paper: '#f3eee6',
+        // Öffentliche Seite: hell und schlicht
+        canvas: '#f6f5f1',
+        surface: '#ffffff',
+        fg: '#121211',
+        muted: '#5d5b56',
+        line: '#dedbd3',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+        sans: ['"Geist Variable"', 'system-ui', 'sans-serif'],
+        display: ['"Geist Variable"', 'system-ui', 'sans-serif'],
+      },
+      transitionTimingFunction: {
+        out: 'cubic-bezier(0.23, 1, 0.32, 1)',
+      },
+      boxShadow: {
+        soft: '0 1px 2px rgba(18,18,17,0.04), 0 8px 24px -6px rgba(18,18,17,0.10)',
+        lift: '0 2px 4px rgba(18,18,17,0.05), 0 18px 40px -12px rgba(18,18,17,0.22)',
       },
       letterSpacing: {
         widest: '0.25em',

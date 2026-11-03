@@ -1,75 +1,85 @@
+import { Headphones, Lightbulb, Speaker } from 'lucide-react';
+
 const services = [
   {
-    title: 'Lichttechnik',
+    title: 'Licht',
+    icon: Lightbulb,
     description:
-      'Stimmungsvolles Licht für Ihre Feier, von sanft und elegant bis ausgelassen und farbenfroh. Wir bringen die richtige Atmosphäre in jeden Raum.',
-    tags: ['Stimmungslicht', 'Strahler', 'Traversen', 'Effekte'],
+      'Stimmungsvolles Licht für Ihre Feier, von sanft und elegant bis ausgelassen und farbenfroh. Passend zu Raum und Anlass.',
+    items: ['Stimmungslicht', 'Moving Heads und Strahler', 'Traversen', 'Nebel und Effekte'],
   },
   {
-    title: 'Tontechnik',
+    title: 'Ton',
+    icon: Speaker,
     description:
-      'Kraftvolle Beschallung für jede Raumgröße. Klarer Sound für Reden, Hintergrundmusik oder Tanzfläche, passend zu Ihrer Gästezahl.',
-    tags: ['Beschallung', 'Mischpult', 'Mikrofone', 'Monitorboxen'],
+      'Klarer Sound für Reden, Hintergrundmusik und Tanzfläche. Wir stimmen die Anlage auf Ihre Gästezahl ab.',
+    items: ['Beschallung bis ca. 200 Gäste', 'Mischpult', 'Kabellose Mikrofone', 'Monitorboxen'],
   },
   {
-    title: 'DJ-Service',
+    title: 'DJ',
+    icon: Headphones,
     description:
       'DJs, die Ihr Publikum lesen. Wunschtitel sind im Vorfeld willkommen, die passende Anlage bringen wir mit.',
-    tags: ['Wunschliste', 'Eigene Anlage', 'Full-Service'],
+    items: ['Musik für jede Generation', 'Wunschliste vorab', 'Eigene Anlage'],
   },
+];
+
+const always = [
   {
     title: 'Planung',
-    description:
-      'Persönliche Beratung und technische Vorabstimmung. Wir planen Ablauf, Timing und Technik im Detail mit Ihnen, auf Wunsch mit Besichtigung vor Ort.',
-    tags: ['Beratung', 'Ablaufplan', 'Besichtigung'],
-  },
-  {
-    title: 'Auf- und Abbau',
-    description:
-      'Lieferung, Auf- und Abbau sind inklusive. Wir kümmern uns um alles Technische, damit Sie sich um Ihre Gäste kümmern können.',
-    tags: ['Anlieferung', 'Aufbau', 'Abbau'],
+    text: 'Persönliche Beratung und Ablaufplan. Auf Wunsch schauen wir uns die Location vorher an.',
   },
   {
     title: 'Backup',
-    description:
-      'Pünktlich, vorbereitet und mit Ersatz-Equipment im Wagen. Ihr Event läuft, von der ersten Minute bis zur letzten Platte.',
-    tags: ['Ersatztechnik', 'Pünktlich', 'Versichert'],
+    text: 'Pünktlich, vorbereitet und mit Ersatztechnik im Wagen, von der ersten bis zur letzten Minute.',
   },
 ];
 
 export default function Services() {
   return (
-    <section id="leistungen" className="relative bg-ink-950 py-28 sm:py-36">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <h2
-            data-reveal
-            className="font-display text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[0.95] tracking-[-0.035em] text-paper lg:col-span-7 text-balance"
-          >
-            Alles, was Ihre Feier hell und laut macht.
+    <section id="leistungen" className="px-5 pb-20 pt-6 sm:px-8 sm:pb-28 sm:pt-10">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-4 lg:grid-cols-12 lg:items-end lg:gap-8">
+          <h2 className="text-balance text-[clamp(2.1rem,7vw,3.5rem)] font-semibold leading-[1.03] tracking-[-0.035em] lg:col-span-7">
+            Alles aus einer Hand.
           </h2>
-          <p data-reveal className="max-w-md text-lg leading-relaxed text-white/70 lg:col-span-5" style={{ ['--reveal-delay' as string]: '80ms' }}>
-            Licht, Ton, DJ und Logistik aus einer Hand, aufeinander abgestimmt von der ersten Idee bis zum letzten Song.
+          <p className="max-w-md text-pretty text-lg leading-relaxed text-muted lg:col-span-5 lg:justify-self-end">
+            Buchen Sie einzeln oder als Paket. Licht, Ton und DJ sind bei uns aufeinander abgestimmt.
           </p>
         </div>
 
-        <ul className="group/list mt-16 sm:mt-20">
-          {services.map((service, i) => (
-            <li key={service.title} data-reveal style={{ ['--reveal-delay' as string]: `${i * 60}ms` }}>
-              <div className="group relative grid gap-3 rounded-2xl px-4 py-7 transition-[background-color,opacity] duration-300 hover:bg-white/[0.04] sm:px-6 md:grid-cols-12 md:items-baseline md:gap-8 md:py-9 md:group-hover/list:opacity-50 md:hover:!opacity-100">
-              <h3 className="flex items-center gap-4 font-display text-[clamp(1.75rem,3.4vw,2.75rem)] font-semibold leading-none tracking-[-0.03em] text-paper md:col-span-4">
-                <span
-                  className="h-3 w-3 flex-shrink-0 rounded-full bg-white/15 transition-[background-color,box-shadow] duration-300 group-hover:bg-accent group-hover:shadow-[0_0_18px_4px_rgba(255,181,71,0.45)]"
-                  aria-hidden="true"
-                />
-                {service.title}
-              </h3>
-              <p className="text-base leading-relaxed text-white/75 md:col-span-5">{service.description}</p>
-              <p className="text-[15px] text-white/55 md:col-span-3 md:text-right">{service.tags.join(' · ')}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-10 overflow-hidden rounded-3xl bg-surface shadow-soft ring-1 ring-black/[0.04] sm:mt-14">
+          <ul className="grid divide-y divide-line md:grid-cols-3 md:divide-x md:divide-y-0">
+            {services.map(({ title, icon: Icon, description, items }) => (
+              <li key={title} className="p-6 sm:p-8">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-fg text-canvas shadow-[0_6px_16px_-6px_rgba(0,0,0,0.5)]">
+                  <Icon className="h-[22px] w-[22px]" strokeWidth={1.6} aria-hidden="true" />
+                </span>
+                <h3 className="mt-6 text-[1.75rem] font-semibold leading-none tracking-[-0.025em]">{title}</h3>
+                <p className="mt-3 text-pretty leading-relaxed text-muted">{description}</p>
+                <ul className="mt-6 flex flex-wrap gap-2">
+                  {items.map((item) => (
+                    <li key={item} className="rounded-full bg-canvas px-3 py-1 text-sm ring-1 ring-inset ring-line">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+
+          <div className="border-t border-line bg-[#fbfaf7] p-6 sm:p-8">
+            <h3 className="text-sm font-medium text-muted">Darauf können Sie sich verlassen</h3>
+            <dl className="mt-4 grid gap-5 sm:grid-cols-2 sm:gap-8">
+              {always.map((a) => (
+                <div key={a.title}>
+                  <dt className="font-semibold">{a.title}</dt>
+                  <dd className="mt-1 text-pretty text-[15px] leading-relaxed text-muted">{a.text}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
       </div>
     </section>
   );
