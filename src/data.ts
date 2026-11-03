@@ -106,9 +106,7 @@ export const packages: PackageInfo[] = [
   },
 ];
 
-export const WHATSAPP_LINK = `https://wa.me/4915121931491?text=${encodeURIComponent(
-  'Hallo DBV Veranstaltungstechnik, ich habe eine Anfrage für ein Event:',
-)}`;
+export const WHATSAPP_LINK = 'https://wa.me/4915121931491';
 
 /** Wert im Formular, wenn noch kein Paket feststeht. */
 export const NO_PACKAGE = 'Noch unsicher, bitte beraten';
