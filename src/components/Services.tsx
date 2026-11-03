@@ -41,47 +41,48 @@ const always = [
 
 export default function Services() {
   return (
-    <section id="leistungen" className="border-t border-line px-5 py-20 sm:px-8 sm:py-28">
+    <section id="leistungen" className="px-5 pb-20 pt-6 sm:px-8 sm:pb-28 sm:pt-10">
       <div className="mx-auto max-w-6xl">
-        <div className="max-w-2xl">
-          <h2 className="text-balance text-[clamp(2rem,6.5vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+        <div className="grid gap-4 lg:grid-cols-12 lg:items-end lg:gap-8">
+          <h2 className="text-balance text-[clamp(2.1rem,7vw,3.5rem)] font-semibold leading-[1.03] tracking-[-0.035em] lg:col-span-7">
             Alles aus einer Hand.
           </h2>
-          <p className="mt-4 text-pretty text-lg leading-relaxed text-muted">
+          <p className="max-w-md text-pretty text-lg leading-relaxed text-muted lg:col-span-5 lg:justify-self-end">
             Buchen Sie einzeln oder als Paket. Licht, Ton und DJ sind bei uns aufeinander abgestimmt.
           </p>
         </div>
 
-        <ul className="mt-12 grid gap-10 sm:mt-16 md:grid-cols-3 md:gap-8">
-          {services.map(({ title, icon: Icon, description, items }) => (
-            <li key={title} className="border-t border-fg pt-6">
-              <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-semibold tracking-[-0.02em]">{title}</h3>
-                <Icon className="h-6 w-6 text-muted" strokeWidth={1.5} aria-hidden="true" />
-              </div>
-              <p className="mt-3 text-pretty leading-relaxed text-muted">{description}</p>
-              <ul className="mt-5 space-y-2 text-[15px]">
-                {items.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-[0.6em] h-1 w-1 flex-shrink-0 rounded-full bg-fg" aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-16 rounded-2xl bg-surface p-6 sm:mt-20 sm:p-10">
-          <h3 className="text-lg font-semibold">Bei jeder Buchung dabei</h3>
-          <dl className="mt-6 grid gap-6 sm:grid-cols-3 sm:gap-10">
-            {always.map((a) => (
-              <div key={a.title}>
-                <dt className="font-medium">{a.title}</dt>
-                <dd className="mt-1.5 text-pretty text-[15px] leading-relaxed text-muted">{a.text}</dd>
-              </div>
+        <div className="mt-10 overflow-hidden rounded-3xl bg-surface shadow-soft ring-1 ring-black/[0.04] sm:mt-14">
+          <ul className="grid divide-y divide-line md:grid-cols-3 md:divide-x md:divide-y-0">
+            {services.map(({ title, icon: Icon, description, items }) => (
+              <li key={title} className="p-6 sm:p-8">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-fg text-canvas shadow-[0_6px_16px_-6px_rgba(0,0,0,0.5)]">
+                  <Icon className="h-[22px] w-[22px]" strokeWidth={1.6} aria-hidden="true" />
+                </span>
+                <h3 className="mt-6 text-[1.75rem] font-semibold leading-none tracking-[-0.025em]">{title}</h3>
+                <p className="mt-3 text-pretty leading-relaxed text-muted">{description}</p>
+                <ul className="mt-6 flex flex-wrap gap-2">
+                  {items.map((item) => (
+                    <li key={item} className="rounded-full bg-canvas px-3 py-1 text-sm ring-1 ring-inset ring-line">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </li>
             ))}
-          </dl>
+          </ul>
+
+          <div className="border-t border-line bg-[#fbfaf7] p-6 sm:p-8">
+            <h3 className="text-sm font-medium text-muted">Bei jeder Buchung dabei</h3>
+            <dl className="mt-4 grid gap-5 sm:grid-cols-3 sm:gap-8">
+              {always.map((a) => (
+                <div key={a.title}>
+                  <dt className="font-semibold">{a.title}</dt>
+                  <dd className="mt-1 text-pretty text-[15px] leading-relaxed text-muted">{a.text}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </div>
     </section>

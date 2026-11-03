@@ -7,6 +7,7 @@
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
     -webkit-tap-highlight-color: transparent;
+    background-color: #000;
   }
   body {
     @apply bg-canvas text-fg font-sans antialiased;
@@ -40,7 +41,7 @@
 @layer components {
   /* Einheitliche Knöpfe für die öffentliche Seite */
   .btn {
-    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-[15px] font-medium transition-[background-color,color,border-color,transform] duration-150 active:scale-[0.98];
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-[15px] font-medium transition-[background-color,color,border-color,box-shadow,transform] duration-200 ease-out active:scale-[0.97];
   }
   .btn-primary {
     @apply btn bg-fg text-canvas hover:bg-black;
@@ -69,6 +70,45 @@
   }
   .text-pretty {
     text-wrap: pretty;
+  }
+  /* Schwarz läuft weich ins Helle aus (Kurve statt linear, damit kein grauer Streifen entsteht) */
+  .fade-to-canvas {
+    background-color: theme('colors.canvas');
+    background-image: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 1) 0%,
+      rgb(0 0 0 / 0.738) 19%,
+      rgb(0 0 0 / 0.541) 34%,
+      rgb(0 0 0 / 0.382) 47%,
+      rgb(0 0 0 / 0.278) 56.5%,
+      rgb(0 0 0 / 0.194) 65%,
+      rgb(0 0 0 / 0.126) 73%,
+      rgb(0 0 0 / 0.075) 80.2%,
+      rgb(0 0 0 / 0.042) 86.1%,
+      rgb(0 0 0 / 0.021) 91%,
+      rgb(0 0 0 / 0.008) 95.2%,
+      rgb(0 0 0 / 0.002) 98.2%,
+      rgb(0 0 0 / 0) 100%
+    );
+  }
+  .fade-from-canvas {
+    background-color: theme('colors.canvas');
+    background-image: linear-gradient(
+      to top,
+      rgb(0 0 0 / 1) 0%,
+      rgb(0 0 0 / 0.738) 19%,
+      rgb(0 0 0 / 0.541) 34%,
+      rgb(0 0 0 / 0.382) 47%,
+      rgb(0 0 0 / 0.278) 56.5%,
+      rgb(0 0 0 / 0.194) 65%,
+      rgb(0 0 0 / 0.126) 73%,
+      rgb(0 0 0 / 0.075) 80.2%,
+      rgb(0 0 0 / 0.042) 86.1%,
+      rgb(0 0 0 / 0.021) 91%,
+      rgb(0 0 0 / 0.008) 95.2%,
+      rgb(0 0 0 / 0.002) 98.2%,
+      rgb(0 0 0 / 0) 100%
+    );
   }
   .logo-dark {
     filter: brightness(0);

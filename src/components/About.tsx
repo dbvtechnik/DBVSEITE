@@ -2,9 +2,11 @@ import { Mail } from 'lucide-react';
 
 export default function About() {
   return (
-    <section id="ueber" className="bg-fg px-5 py-20 text-canvas sm:px-8 sm:py-28">
+    <>
+    <div className="fade-from-canvas h-28 sm:h-40" aria-hidden="true" />
+    <section id="ueber" className="bg-black px-5 pb-16 pt-4 text-canvas sm:px-8 sm:pb-20 sm:pt-8">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-12 lg:gap-8">
-        <h2 className="text-balance text-[clamp(2rem,6.5vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.03em] lg:col-span-5">
+        <h2 className="text-balance text-[clamp(2.1rem,7vw,3.5rem)] font-semibold leading-[1.03] tracking-[-0.035em] lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
           Vier Jungs aus Filderstadt.
         </h2>
 
@@ -37,5 +39,7 @@ export default function About() {
         </div>
       </div>
     </section>
+    <div className="fade-to-canvas h-28 sm:h-40" aria-hidden="true" />
+    </>
   );
 }

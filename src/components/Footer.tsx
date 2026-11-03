@@ -8,7 +8,9 @@ const social = [
 
 export default function Footer() {
   return (
-    <footer className="bg-fg px-5 pb-10 pt-14 text-canvas sm:px-8">
+    <>
+    <div className="fade-from-canvas h-24 sm:h-32" aria-hidden="true" />
+    <footer className="bg-black px-5 pb-10 pt-6 text-canvas sm:px-8">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <a href="#top" className="inline-block rounded-md" aria-label="DBV Veranstaltungstechnik, zum Seitenanfang">
@@ -39,5 +41,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }

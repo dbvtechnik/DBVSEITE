@@ -127,10 +127,10 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
   };
 
   return (
-    <section id="kontakt" className="px-5 py-20 sm:px-8 sm:py-28">
+    <section id="kontakt" className="px-5 pb-12 pt-6 sm:px-8 sm:pb-16 sm:pt-10">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-5">
-          <h2 className="text-balance text-[clamp(2rem,6.5vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+          <h2 className="text-balance text-[clamp(2.1rem,7vw,3.5rem)] font-semibold leading-[1.03] tracking-[-0.035em]">
             Erzählen Sie uns von Ihrer Feier.
           </h2>
           <p className="mt-4 max-w-md text-pretty text-lg leading-relaxed text-muted">
@@ -166,7 +166,7 @@ export default function Contact({ selectedPackage, onSelectPackage }: Props) {
         </div>
 
         <div className="lg:col-span-7">
-          <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl bg-surface p-5 sm:p-8">
+          <form onSubmit={handleSubmit} className="space-y-5 rounded-3xl bg-surface p-5 shadow-lift ring-1 ring-black/[0.04] sm:p-8">
             <div>
               <label htmlFor="contact-package" className="field-label">
                 Paket

@@ -40,11 +40,11 @@ export default function Packages({ selectedPackage, onSelectPackage }: Props) {
   const [openId, setOpenId] = useState<PackageId | null>('gesamt');
 
   return (
-    <section id="pakete" className="border-t border-line px-5 py-20 sm:px-8 sm:py-28">
+    <section id="pakete" className="px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
-            <h2 className="text-balance text-[clamp(2rem,6.5vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+            <h2 className="text-balance text-[clamp(2.1rem,7vw,3.5rem)] font-semibold leading-[1.03] tracking-[-0.035em]">
               Pakete
             </h2>
             <p className="mt-4 max-w-sm text-pretty text-lg leading-relaxed text-muted">
@@ -62,8 +62,10 @@ export default function Packages({ selectedPackage, onSelectPackage }: Props) {
             return (
               <li
                 key={pkg.id}
-                className={`rounded-2xl border transition-colors duration-200 ${
-                  dark ? 'border-fg bg-fg text-canvas' : isSelected ? 'border-fg bg-surface' : 'border-line bg-surface'
+                className={`rounded-2xl transition-[box-shadow,transform] duration-300 ease-out ${
+                  dark
+                    ? 'bg-gradient-to-br from-[#262624] via-[#121211] to-black text-canvas shadow-lift'
+                    : `bg-surface shadow-soft ring-1 hover:shadow-lift ${isSelected ? 'ring-fg' : 'ring-black/[0.04]'}`
                 }`}
               >
                 <button

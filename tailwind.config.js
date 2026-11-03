@@ -38,6 +38,13 @@ export default {
         sans: ['"Geist Variable"', 'system-ui', 'sans-serif'],
         display: ['"Geist Variable"', 'system-ui', 'sans-serif'],
       },
+      transitionTimingFunction: {
+        out: 'cubic-bezier(0.23, 1, 0.32, 1)',
+      },
+      boxShadow: {
+        soft: '0 1px 2px rgba(18,18,17,0.04), 0 8px 24px -6px rgba(18,18,17,0.10)',
+        lift: '0 2px 4px rgba(18,18,17,0.05), 0 18px 40px -12px rgba(18,18,17,0.22)',
+      },
       letterSpacing: {
         widest: '0.25em',
         'extra-wide': '0.35em',
